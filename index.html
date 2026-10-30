@@ -1,0 +1,1138 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Guía de apoyo para el correcto llenado del Certificado Único para casos de violencia (Ley N.º 348), basada en el instructivo oficial del Ministerio de Salud de Bolivia.">
+<meta name="author" content="Dra. Viviana Mamani Huanca">
+<title>Certificado Único: guía de llenado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap">
+<style>
+/* Layout: una columna estrecha tipo formulario; barra superior fija con pestañas; contenido en fichas por sección del certificado */
+:root{
+  --bg:#f2f5ff; --surface:#ffffff; --ink:#141b2d; --muted:#55607a; --line:#d5ddf0;
+  --accent:#1f4fe0; --accent-soft:#e2e9ff; --accent-mid:#a8bcf8; --red:#c01b35; --red-soft:#ffe5e9; --ok:#087a4e; --ok-soft:#d9f6e9;
+  --amber:#ffb020; --amber-soft:#fff1d6; --amber-ink:#8a5200; --violet:#6a2fd1; --violet-soft:#efe6ff; --accent-deep:#16389e;
+  --head:#1f4fe0; --head-ink:#ffffff; --head-muted:rgba(255,255,255,.72);
+  --f-body:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e1222; --surface:#171d33; --ink:#eaedf7; --muted:#a0a9c3; --line:#2a3352;
+  --accent:#7d9cff; --accent-soft:#1d2a57; --accent-mid:#34479a; --red:#ff6b81; --red-soft:#3d1825; --ok:#3fd99a; --ok-soft:#113527;
+  --amber:#ffbe45; --amber-soft:#3a2a0c; --amber-ink:#ffd27a; --violet:#b28cff; --violet-soft:#2b1e4d; --accent-deep:#1a2a78;
+  --head:#2346c7; --head-ink:#ffffff; --head-muted:rgba(255,255,255,.72); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1222; --surface:#171d33; --ink:#eaedf7; --muted:#a0a9c3; --line:#2a3352;
+  --accent:#7d9cff; --accent-soft:#1d2a57; --accent-mid:#34479a; --red:#ff6b81; --red-soft:#3d1825; --ok:#3fd99a; --ok-soft:#113527;
+  --amber:#ffbe45; --amber-soft:#3a2a0c; --amber-ink:#ffd27a; --violet:#b28cff; --violet-soft:#2b1e4d; --accent-deep:#1a2a78;
+  --head:#2346c7; --head-ink:#ffffff; --head-muted:rgba(255,255,255,.72); color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--head)}
+.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--head);color:var(--head-ink);box-shadow:0 2px 10px rgba(20,40,120,.18)}
+header.top .wrap{padding-block:12px 0;display:flex;flex-direction:column;gap:8px}
+.brand{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{flex-direction:column;gap:0!important}
+.brand h1{font-family:var(--f-serif);font-size:21px;margin:0;font-weight:700;letter-spacing:-.005em;text-wrap:balance;line-height:1.2}
+.brand small{font-size:12.5px;color:var(--head-muted)}
+nav.tabs{display:flex;gap:2px}
+nav.tabs a{flex:1 1 auto;text-align:center;padding:9px 2px 10px;text-decoration:none;color:var(--head-muted);font-weight:600;font-size:13px;border-bottom:4px solid transparent;white-space:nowrap}
+nav.tabs a[aria-current="page"]{color:var(--head-ink);border-bottom-color:var(--amber)}
+header.top :focus-visible{outline-color:var(--amber)}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+main .wrap{padding-block:18px 48px;display:flex;flex-direction:column;gap:16px}
+.stack{display:flex;flex-direction:column;gap:12px}
+.casebar{display:flex;align-items:center;gap:10px}
+.casebar .seg{flex:1}
+.casebar .seg button{padding:7px 4px;font-size:13.5px}
+.vh{font-family:var(--f-serif);font-size:19px;margin:0;font-weight:700}
+/* Barra superior compacta al hacer scroll */
+header.top .brand small{transition:opacity .2s,max-height .2s;max-height:20px;overflow:hidden}
+header.top.compact .brand small{opacity:0;max-height:0}
+header.top.compact .wrap{padding-top:8px}
+header.top.compact .brand h1{font-size:18px}
+/* Aviso flotante de lesiones agregadas */
+.fab{position:fixed;left:0;right:0;margin-inline:auto;width:fit-content;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:6;display:flex;align-items:center;gap:10px;background:var(--ink);color:var(--bg);border:0;border-radius:999px;padding:11px 18px;font:inherit;font-size:14px;font-weight:600;box-shadow:0 8px 24px rgba(10,20,60,.3);cursor:pointer;max-width:calc(100% - 32px);white-space:nowrap;animation:rise .3s both}
+.fab b{background:var(--amber);color:#1b1300;border-radius:999px;min-width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;font-size:13px}
+/* Silueta: una vista a la vez en el celular */
+.figtoggle{display:none}
+@media (max-width:560px){
+  .figtoggle{display:flex;width:100%}
+  .figs figure{max-width:230px}
+  .figs[data-show="A"] figure[data-f="P"],.figs[data-show="P"] figure[data-f="A"]{display:none}
+}
+.label{font-size:13px;font-weight:600;color:var(--muted)}
+.seg{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface)}
+.seg button{flex:1;border:0;background:transparent;color:var(--ink);font:inherit;font-size:14px;padding:9px 6px;cursor:pointer}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--surface);font-weight:600}
+.note{font-size:13.5px;color:var(--muted);margin:0}
+.note b{color:var(--ink)}
+
+/* Guía */
+details.sec{background:var(--surface);border:1px solid var(--line);border-radius:8px}
+details.sec[open]{border-color:var(--accent-mid);box-shadow:0 2px 12px rgba(31,79,224,.08)}
+
+details.sec>summary{list-style:none;cursor:pointer;padding:14px 16px;display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:start}
+details.sec>summary::-webkit-details-marker{display:none}
+.num{font-size:12.5px;font-weight:700;font-variant-numeric:tabular-nums;color:#fff;background:var(--accent);border-radius:6px;height:26px;display:flex;align-items:center;justify-content:center}
+.st{font-family:var(--f-serif);font-weight:600;font-size:16.5px;line-height:1.3}
+.st small{font-family:var(--f-body)}
+.st small{display:block;font-weight:400;color:var(--muted);font-size:13px}
+.chev{color:var(--muted);transition:transform .15s}
+details[open] .chev{transform:rotate(90deg)}
+.body{padding:0 16px 16px 54px;display:flex;flex-direction:column;gap:12px}
+.body h4{margin:0;font-size:13.5px;font-weight:700;color:var(--accent)}
+.body ul,.body ol{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
+.body p{margin:0}
+.callout{border-left:4px solid var(--red);background:var(--red-soft);padding:10px 12px;border-radius:0 6px 6px 0;font-size:14px;line-height:1.5}
+.callout.blue{border-color:var(--accent);background:var(--accent-soft)}
+.callout.amber{border-color:var(--amber);background:var(--amber-soft);color:var(--ink)}
+.panel{border-top:4px solid var(--accent)}
+[data-view="horas"] .panel{border-top-color:var(--amber)}
+[data-view="lesiones"] #genForm{border-top-color:var(--violet)}
+.big{color:var(--accent)}
+.preview{border-left:4px solid var(--accent)}
+legend{color:var(--accent)}
+.casebar .label{color:var(--accent)}
+.src{font-size:12px;font-style:italic;color:var(--muted)}
+.tag{font-size:11.5px;font-weight:600;padding:2px 6px;border-radius:4px;background:var(--violet-soft);color:var(--violet);white-space:nowrap;margin-top:2px}
+details.sec.sx{border-left:4px solid var(--violet)}
+#modeSeg button[data-m="genital"][aria-pressed="true"]{background:var(--violet)}
+.codes{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:2px 16px;font-size:14px;margin:0;padding:0!important;list-style:none}
+.codes li{display:flex;gap:8px}
+.codes b{font-family:var(--f-mono);font-weight:500;color:var(--accent);min-width:20px}
+.ink-b{color:var(--accent);font-weight:600}.ink-r{color:var(--red);font-weight:600}
+@media (max-width:480px){.body{padding-left:16px}}
+
+/* Paneles y formularios */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid .full{grid-column:1/-1}
+@media (max-width:520px){.grid{grid-template-columns:1fr}}
+.f{display:flex;flex-direction:column;gap:4px;min-width:0}
+.f label,.f .flabel{font-size:13px;font-weight:600}
+.f .hint{font-size:12px;color:var(--muted)}
+select,input,textarea{font:inherit;font-size:15px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:9px 10px;width:100%}
+.dims{display:flex;align-items:center;gap:8px}
+.dims span{font-family:var(--f-mono);color:var(--muted)}
+.preview{font-size:15px;background:var(--accent-soft);border-radius:6px;padding:12px;min-height:48px}
+.warns{display:flex;flex-direction:column;gap:4px;margin:0;padding:0;list-style:none;font-size:13px;color:var(--red)}
+.warns li::before{content:"△ "}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn{font:inherit;font-size:14px;font-weight:600;border-radius:6px;padding:9px 14px;cursor:pointer;border:1px solid var(--accent);background:var(--accent);color:var(--surface)}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.quiet{background:transparent;border-color:var(--line);color:var(--muted);font-weight:500}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.out{font-size:15px;display:flex;flex-direction:column;gap:12px}
+.out .reg{display:flex;flex-direction:column;gap:6px}
+.out .reg>b{font-family:var(--f-serif);font-size:15px;font-weight:600;color:var(--accent)}
+.item{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:start;border-bottom:1px dashed var(--line);padding-bottom:6px}
+.item button{border:0;background:transparent;color:var(--muted);cursor:pointer;font-size:13px;padding:2px 4px}
+.item button:hover{color:var(--red)}
+.ex{font-size:12px;font-weight:600;color:var(--amber-ink);background:var(--amber-soft);border-radius:4px;padding:1px 6px;margin-right:4px}
+.empty{color:var(--muted);font-size:14px;margin:0}
+.toast{font-size:13px;color:var(--ok)}
+
+/* Silueta */
+.figs{display:flex;justify-content:center;gap:12px}
+.figs figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:2px;flex:1;max-width:170px}
+.figs figcaption{font-size:12.5px;font-weight:600;color:var(--muted)}
+.figs svg{width:100%;height:auto;display:block}
+.zone{fill:var(--accent-soft);stroke:var(--accent-mid);stroke-width:1;cursor:pointer;transition:fill .12s}
+.zone:hover{fill:var(--accent-mid)}
+.zone.on{fill:var(--accent);stroke:var(--accent)}
+.side{font-size:10px;font-weight:700;fill:var(--muted)}
+.skin{fill:none;stroke:var(--accent-mid);stroke-width:.8;pointer-events:none}
+.chip{display:inline-block;font-size:13px;font-weight:500;padding:3px 8px;border-radius:4px;background:var(--accent-soft);color:var(--accent)}
+.chip.r{background:var(--red-soft);color:var(--red)}
+
+/* Reloj */
+.clockwrap{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.clockwrap svg{width:190px;max-width:100%;height:auto}
+.hr circle{fill:var(--surface);stroke:var(--line);stroke-width:1.5;cursor:pointer}
+.hr text{font-size:12px;font-weight:600;fill:var(--ink);pointer-events:none;text-anchor:middle;dominant-baseline:central}
+.hr.on.rec circle{fill:var(--red);stroke:var(--red)}
+.hr.on.ant circle{fill:var(--accent);stroke:var(--accent)}
+.hr.on text{fill:var(--surface)}
+.ring{fill:none;stroke:var(--line);stroke-width:14}
+
+/* 72 h */
+.big{font-size:28px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.status{display:inline-block;font-weight:600;font-size:13.5px;padding:4px 10px;border-radius:5px}
+.status.in{background:var(--ok-soft);color:var(--ok)}
+.status.out{background:var(--red-soft);color:var(--red)}
+.boxes{display:flex;gap:6px;flex-wrap:wrap}
+.boxes span{display:flex;flex-direction:column;align-items:center;border:1px solid var(--line);border-radius:4px;padding:4px 8px;min-width:52px;background:var(--bg)}
+.boxes small{font-size:11px;color:var(--muted)}
+.boxes b{font-size:17px;font-variant-numeric:tabular-nums}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:520px){.cols{grid-template-columns:1fr}}
+.cols ul{margin:0;padding-left:18px;font-size:14px;display:flex;flex-direction:column;gap:3px}
+.err{color:var(--red);font-size:14px;margin:0}
+
+/* Verificar */
+.prog{display:flex;align-items:center;gap:12px}
+.bar{flex:1;height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ok);width:0;transition:width .2s}
+.prog span{font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
+fieldset{border:1px solid var(--line);border-radius:8px;background:var(--surface);margin:0;padding:6px 16px 10px}
+legend{font-weight:600;padding:0 6px;font-size:14px}
+.chk{display:flex;gap:10px;align-items:flex-start;padding:7px 0;font-size:14.5px;cursor:pointer}
+.chk input{width:18px;height:18px;margin-top:2px;flex:none;accent-color:var(--ok)}
+.chk input:checked+span{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line)}
+.done{background:var(--ok-soft);color:var(--ok);border-radius:8px;padding:12px 14px;font-weight:600;font-size:14px}
+
+/* Ruta */
+.route{display:flex;flex-direction:column;align-items:stretch;gap:0}
+.node{border:1px solid var(--line);border-radius:6px;padding:10px 12px;background:var(--bg);font-size:14px}
+.node b{display:block;font-size:13px;font-family:var(--f-mono);font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--accent)}
+.node.main{border-color:var(--accent);background:var(--accent-soft)}
+.node ol{margin:4px 0 0;padding-left:18px}
+.arrow{align-self:center;color:var(--muted);font-family:var(--f-mono);font-size:12px;padding:4px 0;text-align:center}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.trio .node{font-size:12.5px;padding:8px}
+@media (max-width:420px){.trio{grid-template-columns:1fr}}
+.chain{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.chain .node{flex:1;min-width:90px;text-align:center}
+
+.flow{margin:0;display:flex;flex-direction:column;gap:8px;color:var(--ink)}
+.flow svg{width:100%;max-width:440px;height:auto;align-self:center;display:block}
+.flow figcaption{font-size:13.5px;color:var(--muted)}
+.fl-box rect{fill:var(--surface);stroke:var(--accent-mid);stroke-width:1.2}
+.fl-box.key rect{fill:var(--accent);stroke:var(--accent)}
+.fl-box.key text{fill:var(--head-ink)}
+.fl-box.key.soft rect{fill:var(--accent-soft);stroke:var(--accent)}
+.fl-box.key.soft text{fill:var(--ink)}
+.fl-box text{font-size:12.5px;font-weight:600;fill:currentColor;text-anchor:middle}
+.fl-box .fl-sub{font-weight:400;font-size:11.5px;fill:var(--muted)}
+.fl-box text.fl-left,.fl-lbl.fl-left{text-anchor:start}
+.fl-box text.fl-strong{fill:var(--red);font-weight:700}
+.fl-ln line{stroke:currentColor;stroke-width:1.3;opacity:.7}
+.fl-ln line.dash{stroke-dasharray:4 3}
+.fl-lbl{font-size:10.5px;fill:var(--muted);text-anchor:middle;font-style:italic}
+
+/* Ejemplos de llenado */
+.ej{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px 14px;border-left:4px solid var(--ok)}
+.ej-tag{display:inline-block;font-size:12px;font-weight:700;color:var(--ok);background:var(--ok-soft);border-radius:4px;padding:2px 8px;margin-bottom:8px}
+.ej dl{margin:0;display:flex;flex-direction:column;gap:8px}
+.ej dl>div{display:grid;grid-template-columns:minmax(110px,38%) 1fr;gap:4px 12px;align-items:baseline}
+@media (max-width:480px){.ej dl>div{grid-template-columns:1fr;gap:0}}
+.ej dt{font-size:12.5px;color:var(--muted)}
+.ej dd{margin:0;font-family:var(--f-serif);font-size:15.5px;color:var(--accent);font-weight:600;line-height:1.45}
+.mal{border:1px dashed var(--red);border-radius:6px;padding:10px 14px;background:var(--red-soft)}
+.mal .ej-tag{color:var(--red);background:var(--surface);margin-bottom:4px}
+.mal p{margin:0;font-size:14px}
+.mal .mal-t{font-family:var(--f-serif);font-size:15px;color:var(--red);text-decoration:line-through;text-decoration-thickness:1px;margin-bottom:4px}
+
+/* Mapa del certificado */
+.mapa-wrap{display:flex;flex-direction:column;gap:8px}
+.mapa-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.mapa-head h2{font-family:var(--f-serif);font-size:19px;margin:0;font-weight:700}
+.mapa-head span{font-size:13px;color:var(--muted)}
+.mapa{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:14px;border-radius:10px;background:linear-gradient(160deg,var(--accent) 0%,var(--accent-deep) 100%)}
+@media (max-width:560px){.mapa{grid-template-columns:repeat(2,1fr)}}
+.sheet{background:var(--surface);border-radius:3px;box-shadow:0 6px 16px rgba(10,20,70,.28);padding:8px 7px 7px;display:flex;flex-direction:column;gap:5px;aspect-ratio:.72;min-width:0;position:relative}
+.sheet::before{content:"";position:absolute;top:0;left:12%;right:12%;height:3px;background:var(--amber);border-radius:0 0 3px 3px}
+.sheet .pg{font-size:11px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+.blocks{flex:1;display:flex;flex-direction:column;gap:4px;min-height:0}
+.blk{flex-basis:0;min-height:22px;border:1px solid var(--accent-mid);background:var(--accent-soft);color:var(--ink);border-radius:3px;font:inherit;font-size:11px;line-height:1.15;text-align:left;padding:3px 5px;cursor:pointer;display:flex;gap:4px;align-items:flex-start;overflow:hidden;transition:background .12s,border-color .12s}
+.blk b{color:var(--accent);font-variant-numeric:tabular-nums}
+.blk:hover{background:var(--accent-mid)}
+.blk.seen{background:var(--ok-soft);border-color:var(--ok)}
+.blk.seen b{color:var(--ok)}
+.blk.na{background:repeating-linear-gradient(135deg,var(--bg) 0 4px,var(--line) 4px 5px);color:var(--muted);border-style:dashed}
+.blk.na b{color:var(--muted)}
+.mapa-legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+.mapa-legend i{display:inline-block;width:12px;height:12px;border-radius:2px;vertical-align:-2px;margin-right:5px;border:1px solid var(--accent-mid);background:var(--accent-soft)}
+.mapa-legend i.s{background:var(--ok-soft);border-color:var(--ok)}
+.mapa-legend i.n{background:repeating-linear-gradient(135deg,var(--bg) 0 3px,var(--line) 3px 4px);border-style:dashed}
+details.sec.na{opacity:.6}
+details.sec.flash{animation:flash 1.1s ease-out}
+@keyframes flash{0%{box-shadow:0 0 0 4px var(--amber)}100%{box-shadow:0 0 0 0 transparent}}
+
+/* Línea de tiempo 72 h */
+.tl{width:100%;height:auto;display:block;color:var(--ink)}
+.tl .in{fill:var(--ok)}.tl .out{fill:var(--red)}
+.tl .tick{font-size:10.5px;fill:var(--muted);text-anchor:middle;font-variant-numeric:tabular-nums}
+.tl .mk{fill:currentColor}
+.tl .mkl{font-size:12px;font-weight:700;fill:currentColor;text-anchor:middle}
+.tl .lim{stroke:currentColor;stroke-width:1.5;stroke-dasharray:3 2}
+
+/* Escritorio: más ancho y dos columnas en «Lesiones» */
+@media (min-width:900px){
+  main .wrap,header.top .wrap{max-width:1040px}
+  main .wrap>*:not([data-view="lesiones"]){width:100%;max-width:760px;margin-inline:auto}
+  #lesForm{display:grid;grid-template-columns:300px 1fr;gap:20px 28px;align-items:start}
+  #lesForm>.figcol{grid-row:1/span 5;position:sticky;top:120px}
+  #lesForm>:not(.figcol){grid-column:2}
+  .figs figure{max-width:140px}
+  .mapa .sheet{padding:10px 9px 9px}
+  .blk{font-size:12px}
+}
+.figcol{display:flex;flex-direction:column;gap:10px;align-items:center}
+
+/* Glosario y práctica */
+dl.glos{margin:0;display:flex;flex-direction:column;gap:10px}
+dl.glos dt{font-weight:600}
+dl.glos dd{margin:0;font-size:14px;color:var(--ink)}
+dl.glos dd q{font-style:italic}
+.case{display:flex;flex-direction:column;gap:8px;border-top:1px dashed var(--line);padding-top:12px}
+.case:first-child{border-top:0;padding-top:0}
+.case .q{background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:10px 12px;font-family:var(--f-serif);font-size:15px}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opts button{text-align:left;font:inherit;font-size:14px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:6px;padding:8px 10px;cursor:pointer}
+.opts button.good{border-color:var(--ok);background:var(--ok-soft);color:var(--ok);font-weight:600}
+.opts button.bad{border-color:var(--red);background:var(--red-soft);color:var(--red)}
+.fb{font-size:14px;margin:0}
+
+footer{border-top:1px solid var(--line);margin-top:8px;padding-top:14px;font-size:12.5px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+footer p{margin:0}
+footer{gap:4px!important;padding-top:10px!important;font-size:12px!important}
+.fuentes summary{cursor:pointer;color:var(--accent);font-weight:600;width:fit-content}
+.fuentes p{margin-top:4px}
+.visits{font-size:12.5px;background:var(--accent-soft);color:var(--accent);padding:8px 10px;border-radius:6px}
+/* Movimiento: entradas cortas que terminan siempre en reposo visible */
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes viewin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes openbody{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes slide{from{transform:translateX(var(--dx,0))}to{transform:none}}
+@keyframes pop{0%{transform:scale(.6)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
+@keyframes ring{0%{stroke-width:5;stroke:var(--amber)}100%{stroke-width:1}}
+@keyframes ants{to{stroke-dashoffset:-14}}
+@keyframes shake{0%,100%{transform:none}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+@keyframes check{0%{transform:scale(.4)}70%{transform:scale(1.25)}100%{transform:scale(1)}}
+@keyframes sweep{from{background-position:-200% 0}to{background-position:200% 0}}
+
+[data-view]:not([hidden]){animation:viewin .32s cubic-bezier(.2,.7,.2,1) both}
+.mapa .sheet{animation:rise .55s cubic-bezier(.2,.7,.2,1) both}
+.mapa .sheet:nth-child(2){animation-delay:.08s}.mapa .sheet:nth-child(3){animation-delay:.16s}.mapa .sheet:nth-child(4){animation-delay:.24s}
+.mapa .blk{animation:fadein .4s ease both;animation-delay:.35s}
+.blk:hover{transform:translateX(2px)}
+.blk{transition:background .15s,border-color .15s,transform .15s}
+.mapa{background-size:200% 200%;animation:mapgrad 9s ease-in-out infinite alternate}
+@keyframes mapgrad{from{background-position:0% 0%}to{background-position:100% 100%}}
+details.sec[open]>.body{animation:openbody .28s cubic-bezier(.2,.7,.2,1) both}
+details.sec>summary{transition:background .15s}
+details.sec>summary:hover{background:var(--accent-soft);border-radius:8px}
+.zone.on{animation:ring .6s ease-out}
+.hr.on circle{animation:pop .3s ease-out;transform-box:fill-box;transform-origin:center}
+.tl .bar-now{transform-box:fill-box;transform-origin:left center;animation:grow .9s cubic-bezier(.2,.7,.2,1) both}
+.tl .mk,.tl .mkl{animation:slide .9s cubic-bezier(.2,.7,.2,1) both}
+.status{animation:pop .4s .7s ease-out both}
+.flow .fl-box{animation:rise .45s cubic-bezier(.2,.7,.2,1) both}
+.flow g:nth-of-type(2){animation-delay:.1s}.flow g:nth-of-type(3){animation-delay:.2s}.flow g:nth-of-type(4){animation-delay:.3s}
+.flow g:nth-of-type(6){animation-delay:.45s}.flow g:nth-of-type(8){animation-delay:.6s}.flow g:nth-of-type(9){animation-delay:.72s}
+.flow g:nth-of-type(10){animation-delay:.84s}.flow g:nth-of-type(11){animation-delay:.96s}
+.flow .fl-ln,.flow .fl-lbl{animation:fadein .5s .4s both}
+.fl-ln line.dash{animation:ants 1.2s linear infinite}
+.fl-box.key rect{transition:filter .2s}
+.opts button{transition:background .15s,border-color .15s,transform .1s}
+.opts button:active{transform:scale(.98)}
+.opts button.bad{animation:shake .32s ease}
+.opts button.good{animation:pop .35s ease-out}
+.fb:not([hidden]){animation:rise .3s both}
+.chk input:checked{animation:check .3s ease-out}
+.done:not([hidden]){animation:rise .4s both}
+.btn{transition:transform .1s,filter .15s,background .15s}
+.btn:hover:not(:disabled){filter:brightness(1.08)}
+.btn:active:not(:disabled){transform:translateY(1px)}
+.item{animation:rise .35s both}
+.ej,.mal{animation:rise .35s .05s both}
+.mal{animation-delay:.12s}
+header.top nav.tabs a{transition:color .15s,border-color .2s}
+.preview{transition:background .2s}
+.preview.bump{animation:fadein .25s}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><h1>Certificado Único</h1><small>Guía de llenado para casos de violencia, Ley N.º 348</small></div>
+    <nav class="tabs" aria-label="Secciones">
+      <a href="#guia" data-v="guia">Guía</a>
+      <a href="#lesiones" data-v="lesiones">Lesiones</a>
+      <a href="#horas" data-v="horas">72 h</a>
+      <a href="#verificar" data-v="verificar">Verificar</a>
+      <a href="#recursos" data-v="recursos">Recursos</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="casebar">
+      <span class="label" id="caseLbl">Caso</span>
+      <div class="seg" role="group" aria-labelledby="caseLbl">
+        <button type="button" data-c="fisica" aria-pressed="true">Física</button>
+        <button type="button" data-c="sexual" aria-pressed="false">Sexual</button>
+        <button type="button" data-c="ambas" aria-pressed="false" aria-label="Física y sexual">Ambas</button>
+      </div>
+      <p class="note" id="caseNote" hidden></p>
+    </div>
+
+    <!-- GUÍA -->
+    <section data-view="guia" class="stack">
+      <div class="mapa-wrap">
+        <div class="mapa-head"><h2>Mapa del certificado</h2><span>Las cuatro hojas del formulario. Toca una sección para abrirla.</span></div>
+        <div class="mapa" id="mapa"></div>
+        <div class="mapa-legend"><span><i></i>Por revisar</span><span><i class="s"></i>Revisada</span><span><i class="n"></i>No aplica a este tipo de caso</span></div>
+      </div>
+      <div class="callout amber"><b>Reglas del instructivo:</b> letra clara, sin abreviaturas, borrones, enmiendas ni tachaduras. Lo que no pueda consignarse se deja en blanco. <span class="src">Anexo 2, pp. 136 y 144</span><br><b>Ejemplos:</b> siguen un caso ficticio de una mujer de 34 años agredida por su ex pareja; los del examen genital, anal y muestras, otro caso ficticio de violencia sexual en una adulta.</div>
+      <div id="secs" class="stack"></div>
+    </section>
+
+    <!-- LESIONES -->
+    <section data-view="lesiones" class="stack" hidden>
+      <h2 class="vh">Ayuda para describir lesiones</h2>
+      <div class="seg" role="group" aria-label="Tipo de examen" id="modeSeg">
+        <button type="button" data-m="cuerpo" aria-pressed="true">Cuerpo</button>
+        <button type="button" data-m="genital" aria-pressed="false">Genital y anal</button>
+      </div>
+
+      <!-- Cuerpo -->
+      <div id="mCuerpo" class="stack">
+        <p class="note">Una ayuda para no olvidar ningún dato de la lesión. El texto es ilustrativo: revísalo y ajústalo a lo que observas antes de escribirlo en el certificado.</p>
+        <form class="panel" id="lesForm" autocomplete="off">
+          <div class="figcol"><div class="seg figtoggle" role="group" aria-label="Vista de la silueta" id="figTog"><button type="button" data-f="A" aria-pressed="true">Anterior</button><button type="button" data-f="P" aria-pressed="false">Posterior</button></div><div class="figs" id="figs" data-show="A"></div>
+          <span class="chip" id="zoneChip">Toca una zona de la silueta</span></div>
+          <div class="grid">
+            <div class="f">
+              <label for="fReg">Región del formulario</label>
+              <select id="fReg"></select>
+            </div>
+            <div class="f">
+              <label for="fTipo">Tipo de lesión (n.º del diagrama)</label>
+              <select id="fTipo"></select>
+            </div>
+            <div class="f full">
+              <label for="fLoc">Ubicación anatómica precisa</label>
+              <input id="fLoc" type="text" placeholder="cara anterior del tercio medio del brazo derecho">
+              <span class="hint">La silueta propone un texto base. Precisa el tercio o la región exacta.</span>
+            </div>
+            <div class="f">
+              <label for="fCant">Número de lesiones</label>
+              <input id="fCant" type="number" min="1" max="50" value="1" inputmode="numeric">
+            </div>
+            <div class="f">
+              <label for="fForma">Forma</label>
+              <select id="fForma"></select>
+            </div>
+            <div class="f">
+              <label for="fL">Dimensiones (cm)</label>
+              <div class="dims"><input id="fL" type="number" step="0.1" min="0" placeholder="largo" inputmode="decimal" aria-label="Largo en cm"><span>×</span><input id="fA" type="number" step="0.1" min="0" placeholder="ancho" inputmode="decimal" aria-label="Ancho en cm"></div>
+            </div>
+            <div class="f">
+              <label for="fDir">Dirección (opcional)</label>
+              <select id="fDir"></select>
+            </div>
+            <div class="f" id="wColor">
+              <label for="fColor">Coloración</label>
+              <select id="fColor"></select>
+            </div>
+            <div class="f" id="wBordes" hidden>
+              <label for="fBordes">Bordes</label>
+              <select id="fBordes"></select>
+            </div>
+            <div class="f">
+              <label for="fInst">Posible instrumento</label>
+              <select id="fInst"></select>
+            </div>
+            <div class="f full">
+              <label for="fOtras">Otras características (opcional)</label>
+              <input id="fOtras" type="text" placeholder="con costra serohemática, dolorosa a la palpación">
+            </div>
+          </div>
+          <div class="f"><span class="label">Vista previa</span><div class="preview" id="prev"></div></div>
+          <ul class="warns" id="warns"></ul>
+          <div class="row">
+            <button class="btn" type="submit" id="addBtn">Agregar a la descripción</button>
+            <button class="btn quiet" type="button" id="clrForm">Limpiar campos</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Genital y anal -->
+      <div id="mGenital" class="stack" hidden>
+        <p class="note">Marca las posiciones en la esfera del reloj. Según el instructivo, los desgarros, fisuras y cicatrices <span class="ink-b">antiguas</span> se dibujan en azul y las <span class="ink-r">recientes</span> en rojo (pp. 141-142).</p>
+        <form class="panel" id="genForm" autocomplete="off">
+          <div class="grid">
+            <div class="f">
+              <label for="gZona">Zona</label>
+              <select id="gZona">
+                <option value="himen">Himen</option>
+                <option value="ext">Genitales externos</option>
+                <option value="anal">Región anal</option>
+              </select>
+            </div>
+            <div class="f" id="wHimen">
+              <label for="gHimen">Tipo de himen</label>
+              <select id="gHimen">
+                <option value="circular (a)">a. Circular</option>
+                <option value="semilunar (b)">b. Semilunar</option>
+                <option value="bilabiado (c)">c. Bilabiado</option>
+                <option value="otro">Otro (especificar en características)</option>
+              </select>
+            </div>
+            <div class="f">
+              <label for="gHall">Hallazgo</label>
+              <select id="gHall"></select>
+            </div>
+            <div class="f" id="wExt">
+              <label for="gExt">Tipo de desgarro</label>
+              <select id="gExt"><option value="completo">Completo</option><option value="incompleto">Incompleto</option></select>
+            </div>
+            <div class="f" id="wData">
+              <label for="gData">Data</label>
+              <select id="gData"><option value="reciente">A. Reciente</option><option value="antiguo">B. Antiguo</option></select>
+            </div>
+            <div class="f full" id="wClock">
+              <span class="flabel">Ubicación horaria</span>
+              <div class="clockwrap">
+                <svg viewBox="0 0 200 200" id="clock" role="group" aria-label="Esfera del reloj"></svg>
+                <div class="stack" style="gap:6px;flex:1;min-width:150px">
+                  <span class="chip" id="inkChip"></span>
+                  <span class="hint" style="font-size:12.5px;color:var(--muted)">Toca una o varias horas. Toca de nuevo para quitarla.</span>
+                  <button class="btn quiet" type="button" id="clrClock" style="align-self:flex-start">Borrar horas</button>
+                </div>
+              </div>
+            </div>
+            <div class="f full">
+              <label for="gOtras">Otras características (opcional)</label>
+              <input id="gOtras" type="text" placeholder="bordes equimóticos, con coágulos; esfínter con tono conservado">
+            </div>
+          </div>
+          <div class="f"><span class="label">Vista previa</span><div class="preview" id="gPrev"></div></div>
+          <ul class="warns" id="gWarns"></ul>
+          <div class="row"><button class="btn" type="submit" id="gAdd">Agregar a la descripción</button></div>
+        </form>
+      </div>
+
+      <div class="panel">
+        <div class="row" style="justify-content:space-between">
+          <span class="label">Descripción escrita, por región</span>
+          <div class="row">
+            <button class="btn ghost" type="button" id="copyBtn">Copiar todo</button>
+            <button class="btn quiet" type="button" id="clrAll">Vaciar</button>
+          </div>
+        </div>
+        <div class="out" id="out" style="scroll-margin-top:120px"></div>
+        <span class="toast" id="toast" aria-live="polite"></span>
+        <textarea id="copyArea" readonly hidden rows="6"></textarea>
+      </div>
+    </section>
+
+    <!-- 72 HORAS -->
+    <section data-view="horas" class="stack" hidden>
+      <h2 class="vh">Cálculo de las 72 horas</h2>
+      <p class="note">El formulario separa muestras y profilaxis en antes y después de las 72 horas (p. 133).</p>
+      <div class="panel">
+        <div class="grid">
+          <div class="f">
+            <label for="hHecho">Fecha y hora del hecho</label>
+            <input id="hHecho" type="datetime-local">
+          </div>
+          <div class="f">
+            <label for="hAten">Fecha y hora de la atención</label>
+            <input id="hAten" type="datetime-local">
+          </div>
+        </div>
+        <div class="row"><button class="btn quiet" type="button" id="hNow">Atención: ahora</button><span class="ex" id="hEj">Ejemplo cargado: cámbialo por los datos reales</span></div>
+      </div>
+      <div class="panel" id="hRes"></div>
+    </section>
+
+    <!-- VERIFICAR -->
+    <section data-view="verificar" class="stack" hidden>
+      <h2 class="vh">Antes de firmar</h2>
+      <p class="note">Repasa el certificado antes de firmarlo y entregarlo.</p>
+      <div class="prog"><div class="bar"><i id="pbar"></i></div><span id="pnum">0 / 0</span></div>
+      <div id="chk" class="stack" style="gap:10px"></div>
+      <div class="done" id="done" hidden>Todo revisado. El certificado se entrega al personal policial, a la fiscalía o a la autoridad competente, y será homologado por un médico forense.</div>
+      <div><button class="btn quiet" type="button" id="resetChk">Desmarcar todo</button></div>
+    </section>
+
+    <!-- MÁS -->
+    <section data-view="recursos" class="stack" hidden>
+      <h2 class="vh">Recursos</h2>
+      <details class="sec" open>
+        <summary><span class="num">A</span><span class="st">Ruta crítica<small>Atención a víctimas de violencia sexual</small></span><span class="chev">›</span></summary>
+        <div class="body">
+          <figure class="flow">
+            <svg viewBox="0 0 340 410" role="img" aria-label="La víctima llega al establecimiento de salud directamente o derivada por la Policía FELCV o por la Defensoría o el SLIM; el establecimiento las llama, brinda atención, recoge evidencia, llena el Certificado Único y, si corresponde, realiza la interrupción legal del embarazo; las evidencias van con cadena de custodia al IDIF, luego a la Fiscalía y al Tribunal de sentencia.">
+              <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="currentColor"></path></marker></defs>
+              <g class="fl-box"><rect x="105" y="8" width="130" height="38" rx="19"></rect><text x="170" y="31">Víctima</text></g>
+              <g class="fl-box"><rect x="4" y="92" width="80" height="44" rx="6"></rect><text x="44" y="111">Policía</text><text x="44" y="126" class="fl-sub">FELCV</text></g>
+              <g class="fl-box key"><rect x="114" y="86" width="112" height="56" rx="6"></rect><text x="170" y="108">Establecimiento</text><text x="170" y="124">de salud</text></g>
+              <g class="fl-box"><rect x="256" y="92" width="80" height="44" rx="6"></rect><text x="296" y="111">Defensoría</text><text x="296" y="126" class="fl-sub">o SLIM</text></g>
+              <g class="fl-ln">
+                <line x1="140" y1="44" x2="64" y2="90" marker-end="url(#ah)"></line>
+                <line x1="170" y1="46" x2="170" y2="84" marker-end="url(#ah)"></line>
+                <line x1="200" y1="44" x2="276" y2="90" marker-end="url(#ah)"></line>
+                <line x1="84" y1="104" x2="112" y2="104" marker-end="url(#ah)"></line>
+                <line x1="256" y1="104" x2="228" y2="104" marker-end="url(#ah)"></line>
+                <line x1="114" y1="128" x2="86" y2="128" marker-end="url(#ah)" class="dash"></line>
+                <line x1="226" y1="128" x2="254" y2="128" marker-end="url(#ah)" class="dash"></line>
+              </g>
+              <text x="99" y="98" class="fl-lbl">deriva</text><text x="241" y="98" class="fl-lbl">deriva</text>
+              <text x="99" y="142" class="fl-lbl">llama</text><text x="241" y="142" class="fl-lbl">llama</text>
+              <g class="fl-box key soft"><rect x="96" y="168" width="148" height="92" rx="6"></rect>
+                <text x="108" y="188" class="fl-left">1. Atención de emergencia</text>
+                <text x="108" y="206" class="fl-left">2. Recojo de evidencia</text>
+                <text x="108" y="224" class="fl-left fl-strong">3. Certificado Único</text>
+                <text x="108" y="242" class="fl-left">4. ILE (SC 0206/2014)</text></g>
+              <g class="fl-ln"><line x1="170" y1="142" x2="170" y2="166" marker-end="url(#ah)"></line>
+                <line x1="170" y1="260" x2="170" y2="286" marker-end="url(#ah)"></line>
+                <line x1="44" y1="136" x2="44" y2="352" marker-end="url(#ah)"></line>
+                <line x1="132" y1="318" x2="62" y2="352" marker-end="url(#ah)"></line>
+                <line x1="84" y1="374" x2="122" y2="374" marker-end="url(#ah)"></line>
+                <line x1="216" y1="374" x2="254" y2="374" marker-end="url(#ah)"></line></g>
+              <text x="176" y="157" class="fl-lbl fl-left">realiza</text>
+              <text x="176" y="277" class="fl-lbl fl-left">cadena de custodia</text>
+              <g class="fl-box"><rect x="128" y="288" width="84" height="32" rx="4"></rect><text x="170" y="308">Evidencias</text></g>
+              <g class="fl-box"><rect x="4" y="354" width="80" height="40" rx="6"></rect><text x="44" y="378">IDIF</text></g>
+              <g class="fl-box"><rect x="124" y="354" width="92" height="40" rx="6"></rect><text x="170" y="378">Fiscalía</text></g>
+              <g class="fl-box"><rect x="256" y="354" width="80" height="40" rx="6"></rect><text x="296" y="371">Tribunal de</text><text x="296" y="386">sentencia</text></g>
+            </svg>
+            <figcaption>Ruta que sigue un caso de violencia sexual desde que la víctima llega al servicio hasta el tribunal. La línea punteada indica que el establecimiento comunica el caso por teléfono. <span class="src">Anexo 5, p. 148</span></figcaption>
+          </figure>
+        </div>
+      </details>
+
+      <details class="sec">
+        <summary><span class="num">B</span><span class="st">Glosario de lesiones<small>Definiciones de referencia</small></span><span class="chev">›</span></summary>
+        <div class="body">
+          <dl class="glos" id="glos"></dl>
+          <div class="callout blue">La laceración (n.º 11 del diagrama) no está definida en esta guía de referencia.</div>
+          <span class="src">Ministerio Público del Perú (2016). Guía Médico Legal de Valoración Integral de Lesiones Corporales, RFN 3963-2016-MP-FN, sección 6. Fuente extranjera, usada como referencia en español.</span>
+        </div>
+      </details>
+
+      <details class="sec">
+        <summary><span class="num">C</span><span class="st">Practica: ¿qué está mal?<small>Casos ficticios</small></span><span class="chev">›</span></summary>
+        <div class="body"><div id="cases" class="stack"></div></div>
+      </details>
+    </section>
+
+    <button type="button" class="fab" id="fab" hidden></button>
+    <footer>
+      <p>Elaborado por la Dra. Viviana Mamani Huanca. Versión 1.0, octubre de 2026. Material de apoyo basado en el instructivo oficial; no lo reemplaza. Esta página no guarda ni envía ningún dato.</p>
+      <details class="fuentes"><summary>Fuente: Ministerio de Salud de Bolivia, 2015</summary><p><i>Modelo de Atención Integral a Víctimas de Violencia Sexual</i>. Serie Documentos Técnico-Normativos N.º 34 (RM N.º 1508). Anexo 1: formato del Certificado Único (pp. 130-133). Anexo 2: instructivo de llenado (pp. 136-144). Anexo 5: ruta crítica (p. 148). Protocolo de atención (pp. 63-66).</p></details>
+    </footer>
+  </div>
+</main>
+
+<script>
+(function(){
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let caso="fisica";
+const esSexual=()=>caso!=="fisica";
+
+/* ---------- Datos ---------- */
+const TIPOS=[
+ ["Excoriación","Excoriaciones","f"],["Equimosis","Equimosis","f"],["Hematoma","Hematomas","m"],
+ ["Herida contusa","Heridas contusas","f"],["Herida cortante","Heridas cortantes","f"],["Herida punzocortante","Heridas punzocortantes","f"],
+ ["Herida punzante","Heridas punzantes","f"],["Herida contuso cortante","Heridas contuso cortantes","f"],
+ ["Herida de entrada por proyectil disparado por arma de fuego","Heridas de entrada por proyectil disparado por arma de fuego","f"],
+ ["Herida de salida por proyectil disparado por arma de fuego","Heridas de salida por proyectil disparado por arma de fuego","f"],
+ ["Laceración","Laceraciones","f"],["Mordedura humana","Mordeduras humanas","f"],["Quemadura","Quemaduras","f"]];
+const REGIONES=["Cráneo","Rostro","Cuello","Tórax anterior","Tórax posterior","Abdomen","Región lumbar","Pelvis","Extremidades superiores","Extremidades inferiores","Genitales externos","Himen","Examen anal"];
+const FORMAS=["","redondeada","ovalada","lineal","irregular","semilunar","en banda","digitiforme"];
+const DIRS=["","vertical","horizontal","oblicua"];
+const COLORES=["","rojiza","rojo violácea","violácea","azulada","verdosa","amarillenta"];
+const BORDES=["","regulares y nítidos","irregulares","contusos","equimóticos"];
+const INST=["","manos","puño","pies","uñas","dientes","objeto contundente","objeto cortante","objeto punzante","objeto punzocortante","arma de fuego","agente térmico","no determinado"];
+const NUM=["","Una","Dos","Tres","Cuatro","Cinco","Seis","Siete","Ocho","Nueve","Diez"];
+const HERIDAS=[3,4,5,6,7,8,9,10];
+const COLOR_OK=[0,1,2,11,12];
+
+/* ---------- Guía ---------- */
+const SECS=[
+ {t:"Establecimiento y profesional",s:"Encabezado",p:"Form. p. 130 · Instr. p. 136",
+  w:["Nombre del establecimiento de salud, nivel (1.º, 2.º o 3.º) y red de salud a la que pertenece.","Ubicación: ciudad o localidad, municipio, provincia y departamento.","Nombres y apellidos completos de quien atiende y su número de matrícula profesional.","Hora, día, mes y año en que se realizó el examen médico."]},
+ {t:"Datos de la persona valorada",s:"Encabezado",p:"Form. p. 130 · Instr. p. 136",
+  w:["Nombres y apellidos completos.","Sexo, según documento de identidad, características fisonómicas o lo que refiere la persona.","Edad, estado civil, número de carnet de identidad (si lo tiene), dirección y teléfono."],
+  c:"Si la persona no tiene documento de identidad, anótalo en el mismo espacio del C.I."},
+ {t:"Consentimiento informado",s:"Antes del examen",p:"Form. p. 130 · Instr. p. 137",
+  w:["Lee y explica en lenguaje claro y sencillo la importancia del consentimiento y las consecuencias de no realizar los procedimientos para la investigación.","Explica todo lo que se hará: toma de muestras, fotografías, esquemas.","Marca si otorga o no otorga el consentimiento (SÍ / NO).","Si autoriza: C.I., firma y aclaración con nombres y apellidos completos.","Huella dactilar del pulgar derecho en el recuadro del formulario."],
+  c:"Si no sabe leer ni escribir: en el espacio de la firma escribe «No sabe leer ni escribir», anota sus nombres y apellidos completos en la aclaración y toma la huella digital de forma obligatoria."},
+ {t:"Anamnesis",s:"Casillas con X y datos literales",p:"Form. p. 130 · Instr. pp. 137-138",
+  w:["Fecha y hora de la agresión en números, lo más exacta posible: día, mes, año, hora y minutos (ejemplo del instructivo: 18 – 07 – 2014 – 18:30). La pestaña «72 h» te la deja en ese formato.","Lugar del hecho: hogar, centro de diversión, escuela, trabajo, propiedad pública o privada, vehículo automotor, vía pública, desconoce. Si no coincide, especifica en «Otros».","Si el agresor estaba bajo el influjo de sustancias embriagantes (sí / no / desconoce).","Si la víctima estaba bajo el influjo de sustancias y, si fue así, el efecto referido: estimulación del SNC, depresión del SNC, alucinaciones o no específico.","Número de agresores en numeral. Si no lo recuerda, se deja en blanco.","Si el agresor es conocido y el vínculo: pareja, ex pareja, otro o familiar (especifica: padre, padrastro, tío, primo, etc.).","Si hubo agresión física, forcejeo o defensa, si el agresor resultó lesionado y si hubo violencia a nivel de las vestiduras."]},
+ {t:"Breve relato del hecho",s:"Texto libre",p:"Form. p. 130 · Instr. p. 139",
+  w:["Describe de forma resumida lo más sobresaliente de cómo ocurrieron los hechos.","El ejemplo del instructivo transcribe el relato en primera persona, entre comillas, con las palabras de la persona."],
+  c:"Escribe lo que la persona refiere, sin interpretar ni completar con suposiciones."},
+ {t:"Diagramas corporales",s:"Examen físico",p:"Form. p. 131 · Instr. pp. 139-140 · Protocolo p. 63",
+  w:["Usa la silueta que corresponda (mujer o varón) en los planos anterior, posterior y laterales.","En cada zona lesionada anota el número del tipo de lesión según la lista al pie del diagrama.","Ejemplo del instructivo: excoriaciones y equimosis en la cara anterior de ambos brazos → se anotan los números 1 y 2 sobre ambos brazos."],
+  extra:`<h4>Orden sugerido del examen</h4><ol><li>Zonas extragenitales: cabeza, cuello, tórax.</li><li>Áreas paragenitales: abdomen, parte anterior de caderas, cara anterosuperior de los muslos, monte de Venus y glúteos.</li><li>Área genital: genitales externos, periné y región anorrectal.</li></ol>`,
+  codes:true},
+ {t:"Descripción escrita",s:"Debe coincidir con el diagrama",p:"Form. pp. 131-132 · Instr. p. 143 · Protocolo pp. 63-64",
+  w:["Describe todas y cada una de las lesiones, por región: cráneo, rostro, cuello, tórax anterior y posterior, abdomen, región lumbar, pelvis, extremidades superiores e inferiores.","Para cada lesión: a) número, b) ubicación anatómica, c) tipo, d) características (tamaño, forma, coloración, bordes), e) posible instrumento (manos, puño, objeto, etc.)."],
+  extra:`<h4>El protocolo del mismo documento agrega</h4><ul><li>Dimensiones y dirección; profundidad y planos que compromete; características de los bordes y vitalidad.</li><li>Mamas: consignar las lesiones por cuadrantes.</li><li>Boca: observar con especial atención la cara posterior de los incisivos.</li></ul>`,
+  c:"Lo escrito y lo dibujado tienen que decir lo mismo. Puedes armar cada descripción en la pestaña «Lesiones».",cb:true},
+ {t:"Examen ginecológico",s:"Diagrama genital y ubicación horaria",p:"Form. p. 132 · Instr. pp. 141 y 143 · Protocolo pp. 65-66",x:true,
+  w:["Identifica y anota el tipo de himen: a) circular, b) semilunar, c) bilabiado u otro.","Desgarros: completo o incompleto; reciente o antiguo; ubicación horaria.","Describe también presencia de coágulos y proceso de cicatrización.","Completa el texto de «Genitales externos» e «Himen» al pie del diagrama."],
+  ink:true},
+ {t:"Examen de la región anal",s:"Posición genupectoral",p:"Form. p. 132 · Instr. pp. 142-143",x:true,
+  w:["Identifica lesiones y su ubicación horaria: fisuras, laceraciones, desgarros, cicatrices.","Describe la forma, la tonicidad del esfínter anal externo y los pliegues mucocutáneos.","Completa el texto de «Examen anal»."],
+  ink:true},
+ {t:"Muestras, evidencias y profilaxis",s:"Delitos sexuales",p:"Form. p. 133 · Instr. p. 143",x:true,
+  w:["Marca con X las muestras colectadas (hasta 72 horas del hecho). La pestaña «72 h» te dice si el caso está dentro de ese plazo.","Marca la profilaxis indicada antes de las 72 horas o el tratamiento después de las 72 horas.","Embala y rotula las muestras y entrégalas al personal policial o fiscal que conoce el caso.","Registra la cadena de custodia: nombre, C.I., teléfono y firma de quien recibe, y fecha de recepción."]},
+ {t:"Exámenes complementarios",s:"Documentos adjuntos",p:"Form. p. 133 · Instr. p. 143",
+  w:["Adjunta en fotocopia todo documento médico relacionado con la atención: laboratorio, radiología, ecografía, etc.","Enuméralos en las líneas a, b, c del formulario."]},
+ {t:"Impresión diagnóstica",s:"Conclusión del examen",p:"Form. p. 133 · Instr. pp. 143-144",
+  w:["Anota de forma clara los diagnósticos a los que llegaste después del examen físico.","Usa diagnósticos en relación con los que reconoce el Instituto de Investigaciones Forenses (IDIF)."]},
+ {t:"Firma, sello y entrega",s:"Cierre",p:"Form. p. 133 · Instr. p. 144",
+  w:["Firma y aclaración con nombres y apellidos completos.","Sello personal (si lo tienes), C.I., número de celular y teléfono del establecimiento, cargo que ocupas y fecha.","Sello institucional en el recuadro.","Entrega el certificado al personal policial, a la fiscalía o a la autoridad competente, conservando la cadena de custodia."],
+  c:"El Certificado Único será homologado por un médico forense: si algo no se entiende, no sirve."}
+];
+/* Ejemplos de llenado (caso ficticio) */
+const EJ=[
+ {r:[["En el establecimiento de salud","Centro de Salud Integral Modelo"],["Nivel","2.º nivel"],["Red de Salud","Red de Salud Norte"],["Ubicado en","zona Villa Ejemplo, calle 3 n.º 120"],["Ciudad/Localidad · Municipio","La Paz · La Paz"],["Provincia · Departamento","Murillo · La Paz"],["El/La proveedor(a)","Juan Carlos Rojas Flores"],["Matrícula Profesional","R-00000"],["Certifica que a horas … del día … del mes … y año …","08:15 · 30 · octubre · 2026"]],
+  m:"«C.S. Modelo, 2do niv., LPZ. Dr. Rojas.»",p:"Usa abreviaturas, el nombre está incompleto y falta la matrícula profesional."},
+ {r:[["Nombre","Rosa Elena Condori Quispe"],["Sexo","F"],["Edad","34 años"],["Estado civil","Divorciada"],["C.I.","1234567 LP"],["Dirección","zona Villa Ejemplo, calle 7 n.º 45"],["Tel.","70000000"]],
+  m:"«Rosa C., F, 34, s/CI.»",p:"Nombre incompleto y abreviaturas. Si no tiene documento, se escribe «No cuenta con documento de identidad» en el espacio del C.I."},
+ {r:[["Yo","Rosa Elena Condori Quispe"],["con C.I.","1234567 LP"],["he sido informada por el proveedor(a) en salud","Juan Carlos Rojas Flores"],["SÍ / NO otorgo","SÍ (marcado)"],["C.I. · Firma","1234567 LP · [firma]"],["Aclaración de firma","Rosa Elena Condori Quispe"],["Impresión dactilar","Pulgar derecho, en el recuadro"]],
+  m:"Firma en blanco y solo la huella, porque la persona no sabe escribir.",p:"En ese caso se escribe «No sabe leer ni escribir» en el espacio de la firma, el nombre completo en la aclaración y la huella es obligatoria."},
+ {r:[["Fecha y hora de la agresión","29 – 10 – 2026 – 22:40"],["Lugar en que ocurrió el hecho","[X] Hogar"],["Agresor bajo influjo de sustancias embriagantes","[X] SÍ"],["Víctima bajo influjo de sustancias","[X] NO"],["Número de personas que le agredieron","1"],["Presunto agresor es conocido","[X] SÍ"],["Vínculo con el agresor","[X] Ex pareja"],["Le agredió físicamente · Forcejeo","[X] SÍ · [X] SÍ"],["Agresor resultó lesionado","[X] NO"],["Violencia a nivel de las vestiduras","[X] SÍ"]],
+  m:"«Anoche, en su casa, varios.»",p:"La fecha y la hora van en números, el lugar se marca en la casilla y el número de agresores se anota en numeral."},
+ {r:[["Breve relato del hecho","Refiere (sic): «Anoche, como a las once menos veinte, mi ex esposo llegó a mi casa, me empezó a gritar, me agarró fuerte del brazo derecho y me apretó el cuello con su mano. Yo lo empujé y me rompió la blusa.»"]],
+  m:"«Paciente refiere agresión física por su pareja.»",p:"Interpreta en lugar de transcribir, no dice cómo ocurrió y cambia el vínculo (era ex pareja)."},
+ {r:[["Silueta","Mujer, plano anterior"],["Cuello, cara anterolateral izquierda","Se anota el n.º 1 (excoriación)"],["Brazo derecho, cara anterior","Se anota el n.º 2 (equimosis)"]],
+  m:"Lesiones descritas por escrito, pero el diagrama queda sin números.",p:"El diagrama y la descripción escrita se completan siempre los dos y deben coincidir."},
+ {r:[["Cuello","Tres excoriaciones (n.º 1) lineales en cara anterolateral izquierda del cuello, paralelas entre sí, de dirección oblicua, de 2 × 0,2 cm la de mayor tamaño, con costra serohemática. Posible instrumento: uñas."],["Extremidades superiores","Cuatro equimosis (n.º 2) redondeadas en cara anterior del tercio medio del brazo derecho, agrupadas, de 1,5 × 1 cm la de mayor tamaño, de coloración violácea. Posible instrumento: dedos de la mano."]],
+  m:"«Equimosis en brazo y rasguños en cuello.»",p:"No indica número, lado, tercio, medidas, color ni instrumento, y «rasguño» no es un término de la lista del formulario."},
+ {s:1,r:[["Genitales externos","Equimosis de 1 × 0,5 cm en cara interna del labio menor derecho, de coloración violácea."],["Himen","De tipo semilunar (b), con desgarro incompleto reciente en la posición de las 5 según la esfera del reloj, de bordes equimóticos, con coágulo. Remarcado en rojo en el esquema."]],
+  m:"«Himen desflorado.» Desgarros dibujados en un solo color.",p:"No identifica el tipo de himen, no dice si el desgarro es completo o incompleto, reciente o antiguo, ni su ubicación horaria."},
+ {s:1,r:[["Examen anal","En posición genupectoral: pliegues mucocutáneos conservados; tono del esfínter anal externo conservado; fisura reciente de 0,5 cm en la posición de las 6 según la esfera del reloj, con sangrado escaso. Dibujada en rojo en el esquema."]],
+  m:"«Ano sin particularidades.»",p:"Hay que describir la forma, el tono del esfínter y los pliegues aunque no haya lesiones."},
+ {s:1,r:[["Toma de muestras (hasta 72 h)","(X) Sangre para genética · (X) Hisopado del canal vaginal · (X) Hisopados fondo de saco, más frotis en portaobjeto · (X) Extremos distales de las uñas"],["Profilaxis (antes de las 72 h)","(X) ITS · (X) VIH · (X) Anticoncepción de emergencia · (X) Prueba de embarazo · (X) Contención emocional"],["Funcionario que recepciona","Nombre completo del funcionario policial · C.I. · Telf. · Firma"],["Fecha de recepción","30/10/2026, 10:30"]],
+  m:"Muestras marcadas, sin registrar quién las recibió.",p:"Sin el nombre, C.I., teléfono, firma y fecha de quien recibe, se rompe la cadena de custodia."},
+ {r:[["a.","Hemograma completo del 30/10/2026 (fotocopia adjunta)"],["b.","Radiografía de brazo derecho con informe del 30/10/2026 (fotocopia adjunta)"]],
+  m:"«Laboratorios normales.»",p:"Se adjunta la fotocopia de cada documento y se enumera; una opinión no reemplaza al informe."},
+ {r:[["1.","Excoriaciones en cara anterolateral izquierda del cuello."],["2.","Equimosis en cara anterior del brazo derecho."]],
+  m:"«Agresión física.» o «Violación.»",p:"Eso es el hecho o una calificación jurídica, no un diagnóstico médico. Anota los diagnósticos según la nomenclatura que reconoce el IDIF."},
+ {r:[["Firma","[firma]"],["Aclaración de firma","Juan Carlos Rojas Flores"],["Sello del proveedor","[sello]"],["C.I. · Teléfono","7654321 LP · 70000001 / establecimiento 2200000"],["Cargo que ocupa","Médico de guardia, Servicio de Emergencias"],["Fecha","30/10/2026"],["Sello de la institución","[sello]"]],
+  m:"Solo rúbrica y sello, sin aclaración ni datos de contacto.",p:"El médico forense que homologa el certificado debe poder identificarte y ubicarte."}
+];
+function ejemploHTML(i){
+  const e=EJ[i];if(!e)return "";
+  return `<h4>Ejemplo de llenado</h4><div class="ej"><span class="ej-tag">Ejemplo ilustrativo (caso ficticio${e.s?" de violencia sexual":""})</span><dl>${e.r.map(([k,v])=>`<div><dt>${k}</dt><dd>${v}</dd></div>`).join("")}</dl></div>
+  <div class="mal"><span class="ej-tag">Evita</span><p class="mal-t">${e.m}</p><p>${e.p}</p></div>`;
+}
+const CORTO=["Establecimiento","Persona valorada","Consentimiento","Anamnesis","Relato del hecho","Diagramas","Descripción escrita","Ginecológico","Región anal","Muestras","Complementarios","Diagnóstico","Firma y entrega"];
+const MAPA=[{p:130,b:[[0,1],[1,1],[2,1.7],[3,2.2],[4,1.1]]},{p:131,b:[[5,4.2],[6,1.3]]},{p:132,b:[[6,1],[7,2.6],[8,2.6],[9,0]]},{p:133,b:[[9,2.8],[10,.9],[11,.9],[12,1.3]]}];
+const vistos=new Set();
+function renderMapa(){
+  $("#mapa").innerHTML=MAPA.map(pg=>`<div class="sheet"><span class="pg">p. ${pg.p}</span><div class="blocks">${pg.b.filter(([,w])=>w>0).map(([i,w])=>{
+    const s=SECS[i],na=s.x&&!esSexual();
+    return `<button type="button" class="blk${na?" na":""}${vistos.has(i)&&!na?" seen":""}" style="flex-grow:${w}" data-sec="${i}" aria-label="Sección ${i+1}: ${s.t}${na?", no aplica a este tipo de caso":""}"><b>${i+1}</b><span>${CORTO[i]}</span></button>`}).join("")}</div></div>`).join("");
+}
+$("#mapa").addEventListener("click",e=>{
+  const b=e.target.closest(".blk");if(!b)return;
+  const d=document.getElementById("sec-"+b.dataset.sec);if(!d)return;
+  d.open=true;d.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+  d.classList.remove("flash");void d.offsetWidth;d.classList.add("flash");
+});
+function renderGuia(){
+  const box=$("#secs");box.innerHTML="";
+  SECS.forEach((s,i)=>{
+    const na=s.x&&!esSexual();
+    const d=document.createElement("details");d.className="sec"+(na?" na":"")+(s.x?" sx":"");d.id="sec-"+i;
+    d.style.scrollMarginTop="130px";
+    d.addEventListener("toggle",()=>{if(d.open&&!vistos.has(i)){vistos.add(i);renderMapa()}});
+    let h=`<summary><span class="num">${String(i+1).padStart(2,"0")}</span><span class="st">${s.t}<small>${na?"Solo en casos de violencia sexual":s.s}</small></span>${s.x?'<span class="tag">Sexual</span>':'<span class="chev">›</span>'}</summary><div class="body">`;
+    h+=`<h4>Qué anotar</h4><ul>${s.w.map(x=>`<li>${x}</li>`).join("")}</ul>`;
+    h+=ejemploHTML(i);
+    if(s.extra)h+=s.extra;
+    if(s.codes)h+=`<h4>Lista de lesiones del diagrama</h4><ul class="codes">${TIPOS.map((t,i)=>`<li><b>${i+1}</b>${t[0]}</li>`).join("")}</ul>`;
+    if(s.ink)h+=`<div class="callout">Remarca con <span class="ink-b">bolígrafo azul</span> los desgarros, fisuras o cicatrices antiguas y con <span class="ink-r">bolígrafo rojo</span> los recientes.</div>`;
+    if(s.c)h+=`<div class="callout blue">${s.c}${s.cb?' <a href="#lesiones">Ir a «Lesiones»</a>':''}</div>`;
+    h+=`<span class="src">${s.p.replace(/Form\./g,"Formulario").replace(/Instr\./g,"instructivo").replace(/Protocolo/g,"protocolo").replace(/ · /g,"; ")}</span></div>`;
+    d.innerHTML=h;box.appendChild(d);
+  });
+}
+
+/* ---------- Silueta ---------- */
+// x en coordenadas de una figura de 120 de ancho; L = mitad izquierda del dibujo
+const CARA={A:"anterior",P:"posterior"};
+function ladoDe(fig,mitad,g){ // mitad: "L" o "R" del dibujo
+  const der = fig==="A" ? mitad==="L" : mitad==="R";
+  return der ? (g==="f"?"derecha":"derecho") : (g==="f"?"izquierda":"izquierdo");
+}
+// Silueta anatómica: cada zona es un trazo de la mitad izquierda del dibujo, reflejado para la derecha
+const mirror=d=>d.replace(/(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/g,(_,x,y)=>`${(120-x).toFixed(1)},${y}`);
+const P={
+  craneo:"M46,17 C46,7 52,3 60,3 C68,3 74,7 74,17 Z",
+  rostro:"M46,17 L74,17 C74,29 68,37 60,37 C52,37 46,29 46,17 Z",
+  cabeza:"M46,17 C46,7 52,3 60,3 C68,3 74,7 74,17 C74,29 68,37 60,37 C52,37 46,29 46,17 Z",
+  cuello:"M53,35 L67,35 L68,46 L52,46 Z",
+  torax:"M60,46 L52,46 C43,47 36,50 33,57 L35,100 L60,100 Z",
+  abdomen:"M35,100 C37,110 38,122 36,134 L60,134 L60,100 Z",
+  pelvis:"M36,134 C33,142 32,151 34,161 L59,161 L60,134 Z",
+  brazo:"M33,57 C28,59 25,63 24,71 L21,97 L30,99 L35,75 Z",
+  antebrazo:"M21,97 L17,134 L25,135 L30,99 Z",
+  mano:"M17,134 C13,140 13,148 16,153 C19,157 25,155 26,148 L25,135 Z",
+  muslo:"M34,161 L59,161 L57,170 L55,205 L40,205 C37,190 35,175 34,161 Z",
+  pierna:"M40,205 L55,205 L53,241 L44,241 C42,229 40,217 40,205 Z",
+  pie:"M44,241 L53,241 L54,251 C54,256 41,257 38,254 C37,250 41,246 44,241 Z"
+};
+function zonas(fig){
+  const z=[];const c=CARA[fig];
+  if(fig==="A"){z.push({d:P.craneo,reg:0,loc:()=>""});z.push({d:P.rostro,reg:1,loc:()=>""})}
+  else z.push({d:P.cabeza,reg:0,loc:()=>"región occipital"});
+  z.push({d:P.cuello,reg:2,loc:()=>`cara ${c} del cuello`});
+  ["L","R"].forEach(m=>{
+    const t=d=>m==="L"?d:mirror(d);
+    z.push({d:t(P.torax),reg:fig==="A"?3:4,loc:()=>`cara ${c} del hemitórax ${ladoDe(fig,m)}`});
+    z.push({d:t(P.abdomen),reg:fig==="A"?5:6,loc:()=>fig==="A"?`hemiabdomen ${ladoDe(fig,m)}`:`región lumbar ${ladoDe(fig,m,"f")}`});
+    z.push({d:t(P.pelvis),reg:7,loc:()=>fig==="A"?`región inguinal ${ladoDe(fig,m,"f")}`:`región glútea ${ladoDe(fig,m,"f")}`});
+    z.push({d:t(P.brazo),reg:8,loc:()=>`cara ${c} del brazo ${ladoDe(fig,m)}`});
+    z.push({d:t(P.antebrazo),reg:8,loc:()=>`cara ${c} del antebrazo ${ladoDe(fig,m)}`});
+    z.push({d:t(P.mano),reg:8,loc:()=>fig==="A"?`palma de la mano ${ladoDe(fig,m,"f")}`:`dorso de la mano ${ladoDe(fig,m,"f")}`});
+    z.push({d:t(P.muslo),reg:9,loc:()=>`cara ${c} del muslo ${ladoDe(fig,m)}`});
+    z.push({d:t(P.pierna),reg:9,loc:()=>`cara ${c} de la pierna ${ladoDe(fig,m,"f")}`});
+    z.push({d:t(P.pie),reg:9,loc:()=>fig==="A"?`dorso del pie ${ladoDe(fig,m)}`:`talón ${ladoDe(fig,m)}`});
+  });
+  return z;
+}
+const ZMAP={};
+function renderFigs(){
+  let h="";
+  ["A","P"].forEach(fig=>{
+    const zs=zonas(fig);
+    const L=fig==="A"?"Der.":"Izq.", R=fig==="A"?"Izq.":"Der.";
+    h+=`<figure data-f="${fig}"><svg viewBox="0 0 120 262" role="group" aria-label="Silueta, vista ${CARA[fig]}">`;
+    zs.forEach((z,i)=>{const id=fig+i;ZMAP[id]=z;
+      h+=`<path class="zone" data-z="${id}" d="${z.d}" tabindex="0" role="button" aria-label="${REGIONES[z.reg]}${z.loc()?", "+z.loc():""}"></path>`;});
+    // detalles anatómicos de referencia, no interactivos
+    h+=fig==="A"
+      ? `<path class="skin" d="M53,24 Q60,28 67,24"></path><path class="skin" d="M47,70 Q53,76 59,72 M73,70 Q67,76 61,72"></path><circle class="skin" cx="60" cy="118" r="1.4"></circle>`
+      : `<path class="skin" d="M60,48 L60,132"></path><path class="skin" d="M42,60 Q48,66 54,62 M78,60 Q72,66 66,62"></path><path class="skin" d="M60,140 L60,158"></path>`;
+    h+=`<text class="side" x="2" y="62">${L}</text><text class="side" x="118" y="62" text-anchor="end">${R}</text></svg><figcaption>Vista ${CARA[fig]}</figcaption></figure>`;
+  });
+  $("#figs").innerHTML=h;
+}
+function elegirZona(id){
+  const z=ZMAP[id];if(!z)return;
+  document.querySelectorAll(".zone").forEach(r=>r.classList.toggle("on",r.dataset.z===id));
+  $("#fReg").value=String(z.reg);
+  const loc=z.loc();$("#fLoc").value=loc;
+  $("#zoneChip").textContent=REGIONES[z.reg]+(loc?": "+loc:"");
+  actualizar();$("#fLoc").focus({preventScroll:true});
+}
+$("#figs").addEventListener("click",e=>{const r=e.target.closest(".zone");if(r)elegirZona(r.dataset.z)});
+$("#figs").addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.classList.contains("zone")){e.preventDefault();elegirZona(e.target.dataset.z)}});
+
+/* ---------- Redactor cuerpo ---------- */
+const opt=(sel,arr,lbl)=>{sel.innerHTML=arr.map((v,i)=>`<option value="${i}">${lbl?lbl(v,i):(v||"—")}</option>`).join("")};
+opt($("#fReg"),REGIONES.slice(0,10));
+opt($("#fTipo"),TIPOS,(t,i)=>`${i+1}. ${t[0]}`);
+opt($("#fForma"),FORMAS);opt($("#fDir"),DIRS);opt($("#fColor"),COLORES);opt($("#fBordes"),BORDES);opt($("#fInst"),INST);
+$("#fTipo").value="1";
+
+function leer(){
+  const ti=+$("#fTipo").value, n=Math.max(1,parseInt($("#fCant").value)||1);
+  return {reg:+$("#fReg").value,ti,n,forma:FORMAS[+$("#fForma").value],dir:DIRS[+$("#fDir").value],
+    loc:$("#fLoc").value.trim(),L:$("#fL").value.trim(),A:$("#fA").value.trim(),
+    color:COLOR_OK.includes(ti)?COLORES[+$("#fColor").value]:"",
+    bordes:HERIDAS.includes(ti)?BORDES[+$("#fBordes").value]:"",
+    inst:INST[+$("#fInst").value],otras:$("#fOtras").value.trim()};
+}
+const low=s=>s.charAt(0).toLowerCase()+s.slice(1);
+function frase(o){
+  const t=TIPOS[o.ti];
+  const cant=o.n===1?(t[2]==="m"?"Un ":"Una ")+low(t[0]):(NUM[o.n]||String(o.n))+" "+low(t[1]);
+  let p=`${cant} (n.º ${o.ti+1} del diagrama)`+(o.loc?` en ${o.loc}`:" en [ubicación]");
+  const c=[];
+  if(o.forma)c.push(`de forma ${o.forma}`);
+  if(o.L||o.A){const dm=o.L&&o.A?`${o.L} × ${o.A} cm`:`${o.L||o.A} cm`;c.push(`de ${dm}${o.n>1?" la de mayor tamaño":""}`)}
+  if(o.dir)c.push(`de dirección ${o.dir}`);
+  if(o.color)c.push(`de coloración ${o.color}`);
+  if(o.bordes)c.push(`de bordes ${o.bordes}`);
+  if(o.otras)c.push(o.otras);
+  if(c.length)p+=", "+c.join(", ");
+  p+=".";
+  if(o.inst)p+=` Posible instrumento: ${o.inst}.`;
+  return p.replace(/\s+/g," ").replace(/\.\./g,".");
+}
+function avisos(o){
+  const w=[];
+  if(!o.loc)w.push("Falta la ubicación anatómica.");
+  else if(o.reg>1&&!/derech|izquierd|bilateral|ambos|ambas|media/i.test(o.loc))w.push("Indica el lado (derecho, izquierdo, línea media o bilateral).");
+  if(!o.L&&!o.A)w.push("Faltan las dimensiones en centímetros.");
+  if(!o.inst)w.push("No se indicó el posible instrumento.");
+  return w;
+}
+function actualizar(){
+  const ti=+$("#fTipo").value;
+  $("#wColor").hidden=!COLOR_OK.includes(ti);
+  $("#wBordes").hidden=!HERIDAS.includes(ti);
+  const o=leer();$("#prev").textContent=frase(o);
+  $("#warns").innerHTML=avisos(o).map(x=>`<li>${x}</li>`).join("");
+  $("#addBtn").disabled=!o.loc;
+}
+$("#lesForm").addEventListener("input",actualizar);
+$("#lesForm").addEventListener("change",actualizar);
+
+let lista=[{reg:8,txt:"Dos excoriaciones (n.º 1 del diagrama) en cara anterior del tercio medio de ambos brazos, de forma lineal, de 3 × 0,2 cm la de mayor tamaño. Posible instrumento: uñas.",ej:true},
+           {reg:8,txt:"Una equimosis (n.º 2 del diagrama) en cara anterior del tercio medio del brazo derecho, de forma ovalada, de 2 × 1,5 cm, de coloración violácea. Posible instrumento: manos.",ej:true}];
+function agregar(reg,txt){lista=lista.filter(x=>!x.ej);lista.push({reg,txt});pintar();msg("Lesión agregada.");fab()}
+function fab(){
+  const n=lista.filter(x=>!x.ej).length, el=$("#fab");
+  el.hidden=!(n&&document.body.dataset.v==="lesiones");
+  el.innerHTML=`<b>${n}</b> ${n===1?"lesión agregada":"lesiones agregadas"}: ver texto`;
+}
+$("#fab").addEventListener("click",()=>$("#out").scrollIntoView({behavior:"smooth",block:"start"}));
+document.getElementById("figTog").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;
+  $("#figs").dataset.show=b.dataset.f;document.querySelectorAll("#figTog button").forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"))});
+(()=>{const hd=document.querySelector("header.top");let t=false;addEventListener("scroll",()=>{if(t)return;t=true;requestAnimationFrame(()=>{hd.classList.toggle("compact",scrollY>40);t=false})},{passive:true})})();
+function pintar(){
+  const out=$("#out");
+  if(!lista.length){out.innerHTML='<p class="empty">Aún no agregaste lesiones. Completa el formulario de arriba y pulsa «Agregar a la descripción».</p>';return}
+  let h="";
+  REGIONES.forEach((r,ri)=>{
+    const its=lista.map((x,i)=>({...x,i})).filter(x=>x.reg===ri);
+    if(!its.length)return;
+    h+=`<div class="reg"><b>${r}</b>${its.map(x=>`<div class="item"><span>${x.ej?'<span class="ex">Ejemplo</span>':''}${esc(x.txt)}</span><button type="button" data-del="${x.i}">Quitar</button></div>`).join("")}</div>`;
+  });
+  out.innerHTML=h;
+}
+$("#out").addEventListener("click",e=>{const b=e.target.closest("[data-del]");if(!b)return;lista.splice(+b.dataset.del,1);pintar();fab()});
+$("#lesForm").addEventListener("submit",e=>{
+  e.preventDefault();const o=leer();if(!o.loc)return;
+  agregar(o.reg,frase(o));
+  ["#fLoc","#fL","#fA","#fOtras"].forEach(s=>$(s).value="");$("#fCant").value="1";
+  document.querySelectorAll(".zone.on").forEach(r=>r.classList.remove("on"));$("#zoneChip").textContent="Toca una zona de la silueta";
+  actualizar();
+});
+$("#clrForm").addEventListener("click",()=>{$("#lesForm").reset();$("#fTipo").value="1";document.querySelectorAll(".zone.on").forEach(r=>r.classList.remove("on"));$("#zoneChip").textContent="Toca una zona de la silueta";actualizar()});
+$("#clrAll").addEventListener("click",()=>{lista=[];pintar();msg("");fab()});
+function texto(){return REGIONES.map((r,ri)=>{const its=lista.filter(x=>x.reg===ri);return its.length?`${r}: ${its.map(x=>x.txt).join(" ")}`:null}).filter(Boolean).join("\n")}
+function msg(t){$("#toast").textContent=t}
+$("#copyBtn").addEventListener("click",()=>{
+  const t=texto();if(!t){msg("No hay texto para copiar.");return}
+  const ta=$("#copyArea");
+  const fallback=()=>{ta.hidden=false;ta.value=t;ta.focus();ta.select();msg("Selecciona y copia el texto del recuadro.")};
+  try{navigator.clipboard.writeText(t).then(()=>{ta.hidden=true;msg("Texto copiado.")},fallback)}catch(_){fallback()}
+});
+
+/* ---------- Redactor genital y anal ---------- */
+const HALL={
+  himen:["Sin desgarros","Desgarro"],
+  ext:["Excoriación","Equimosis","Hematoma","Herida contusa","Herida cortante","Herida punzocortante","Herida punzante","Herida contuso cortante","Laceración","Desgarro"],
+  anal:["Excoriación","Equimosis","Hematoma","Herida contusa","Herida cortante","Herida punzocortante","Herida punzante","Herida contuso cortante","Fisura","Desgarro","Cicatriz"]
+};
+const horas=new Set();
+function renderClock(){
+  let h=`<circle class="ring" cx="100" cy="100" r="62"></circle>`;
+  for(let i=1;i<=12;i++){const a=(i/12)*2*Math.PI;const x=100+82*Math.sin(a),y=100-82*Math.cos(a);
+    h+=`<g class="hr" data-h="${i}" tabindex="0" role="button" aria-label="Hora ${i}"><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="14"></circle><text x="${x.toFixed(1)}" y="${y.toFixed(1)}">${i}</text></g>`}
+  h+=`<text x="100" y="100" style="font-size:11px;fill:var(--muted);text-anchor:middle;dominant-baseline:central">${$("#gZona")&&$("#gZona").value==="anal"?"genupectoral":"posición"}</text>`;
+  $("#clock").innerHTML=h;
+}
+function toggleHora(g){const n=+g.dataset.h;horas.has(n)?horas.delete(n):horas.add(n);gActualizar()}
+$("#clock").addEventListener("click",e=>{const g=e.target.closest(".hr");if(g)toggleHora(g)});
+$("#clock").addEventListener("keydown",e=>{const g=e.target.closest(".hr");if(g&&(e.key==="Enter"||e.key===" ")){e.preventDefault();toggleHora(g)}});
+$("#clrClock").addEventListener("click",()=>{horas.clear();gActualizar()});
+function setHall(){const z=$("#gZona").value;$("#gHall").innerHTML=HALL[z].map(v=>`<option>${v}</option>`).join("");if(z==="himen")$("#gHall").value="Desgarro"}
+function listaHoras(){
+  const a=[...horas].sort((x,y)=>x-y);if(!a.length)return "";
+  if(a.length===1)return `en la posición de las ${a[0]} según la esfera del reloj`;
+  return `en las posiciones de las ${a.slice(0,-1).join(", ")} y ${a[a.length-1]} según la esfera del reloj`;
+}
+function gLeer(){
+  const z=$("#gZona").value,hall=$("#gHall").value,sin=hall==="Sin desgarros";
+  return {z,hall,sin,himen:$("#gHimen").value,ext:$("#gExt").value,data:$("#gData").value,h:listaHoras(),otras:$("#gOtras").value.trim()};
+}
+const DATAF={reciente:"reciente",antiguo:"antigua"};
+function gFrase(o){
+  const fem=!["Desgarro","Hematoma"].includes(o.hall);
+  const data=fem?DATAF[o.data]:o.data;
+  let p;
+  if(o.z==="himen"){
+    const tipo=o.himen==="otro"?"de otro tipo":`de tipo ${o.himen}`;
+    p=`Himen ${tipo}`;
+    p+=o.sin?", sin desgarros":`, con desgarro ${o.ext}, ${o.data}`+(o.h?`, ${o.h}`:", [ubicación horaria]");
+  } else {
+    const donde=o.z==="anal"?"en región anal":"en genitales externos";
+    p=`${o.hall}${o.hall==="Desgarro"?" "+o.ext:""} ${data} ${donde}`+(o.h?`, ${o.h}`:", [ubicación horaria]");
+  }
+  if(o.otras)p+=`, ${o.otras}`;
+  return p+".";
+}
+function gActualizar(){
+  const z=$("#gZona").value;
+  $("#wHimen").hidden=z!=="himen";
+  const o=gLeer();
+  $("#wExt").hidden=o.hall!=="Desgarro"||z==="anal";
+  $("#wData").hidden=o.sin;$("#wClock").hidden=o.sin;
+  document.querySelectorAll("#clock .hr").forEach(g=>{const on=horas.has(+g.dataset.h);g.classList.toggle("on",on);g.classList.toggle("rec",o.data==="reciente");g.classList.toggle("ant",o.data!=="reciente")});
+  const ic=$("#inkChip");ic.textContent=o.data==="reciente"?"Dibújalo en rojo (reciente)":"Dibújalo en azul (antiguo)";ic.className="chip"+(o.data==="reciente"?" r":"");
+  $("#gPrev").textContent=gFrase(o);
+  const w=[];if(!o.sin&&!horas.size)w.push("Marca al menos una posición en el reloj.");
+  if(o.himen==="otro"&&z==="himen"&&!o.otras)w.push("Especifica el tipo de himen en «Otras características».");
+  $("#gWarns").innerHTML=w.map(x=>`<li>${x}</li>`).join("");
+  $("#gAdd").disabled=!o.sin&&!horas.size;
+}
+$("#gZona").addEventListener("change",()=>{setHall();renderClock();gActualizar()});
+$("#genForm").addEventListener("input",gActualizar);$("#genForm").addEventListener("change",gActualizar);
+$("#genForm").addEventListener("submit",e=>{
+  e.preventDefault();const o=gLeer();if(!o.sin&&!horas.size)return;
+  agregar({himen:11,ext:10,anal:12}[o.z],gFrase(o));horas.clear();$("#gOtras").value="";gActualizar();
+});
+
+let modo="cuerpo";
+function setModo(m){
+  if(m==="genital"&&!esSexual())m="cuerpo";
+  modo=m;
+  document.querySelectorAll("#modeSeg button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.m===m?"true":"false"));
+  $("#mCuerpo").hidden=m!=="cuerpo";$("#mGenital").hidden=m!=="genital";
+}
+document.querySelectorAll("#modeSeg button").forEach(b=>b.addEventListener("click",()=>setModo(b.dataset.m)));
+
+/* ---------- 72 horas ---------- */
+const pad=n=>String(n).padStart(2,"0");
+const toLocal=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+(function(){const now=new Date();now.setSeconds(0,0);$("#hAten").value=toLocal(now);$("#hHecho").value=toLocal(new Date(now-30*3600e3-15*60e3))})();
+const MUESTRAS=["Orina para toxicología","Sangre para genética","Peinado púbico","Hisopados de paredes internas de labios menores, mayores y del vestíbulo","Hisopado del canal vaginal","Hisopados de fondo de saco, más frotis en portaobjeto","Hisopados anales, más frotis en portaobjeto","Extremos distales de las uñas","Hisopado de las sugilaciones"];
+const PRE=["Profilaxis para ITS","Profilaxis para VIH","Anticoncepción de emergencia","Prueba de embarazo","Contención emocional"];
+const POST=["Tratamiento para ITS","Tratamiento para VIH","Tratamiento del estrés postraumático","Se recomienda: prueba de embarazo, estudio ecográfico, estudio radiológico, referencia a hospital de mayor nivel"];
+function calc72(){
+  const a=$("#hHecho").value,b=$("#hAten").value,box=$("#hRes");
+  if(!a||!b){box.innerHTML='<p class="empty">Ingresa la fecha y hora del hecho y de la atención.</p>';return}
+  const d1=new Date(a),d2=new Date(b),min=Math.round((d2-d1)/60000);
+  if(min<0){box.innerHTML='<p class="err">La fecha del hecho es posterior a la de la atención. Revisa los datos.</p>';return}
+  const h=Math.floor(min/60),m=min%60,dias=Math.floor(h/24),dentro=min<=72*60;
+  const tmax=Math.max(96,Math.ceil((min/60+12)/24)*24),X=t=>12+296*Math.min(t,tmax)/tmax,xe=X(min/60);
+  let ticks="";for(let t=0;t<=tmax;t+=24)ticks+=`<text class="tick" x="${X(t).toFixed(1)}" y="58">${t} h</text><line x1="${X(t).toFixed(1)}" y1="40" x2="${X(t).toFixed(1)}" y2="45" stroke="currentColor" opacity=".35"></line>`;
+  const tl=`<svg class="tl" viewBox="0 0 320 64" role="img" aria-label="Línea de tiempo: han pasado ${h} horas desde el hecho; el límite es 72 horas.">
+    <rect class="in" x="${X(0)}" y="28" width="${(X(72)-X(0)).toFixed(1)}" height="10" rx="5" opacity=".28"></rect>
+    <rect class="out" x="${X(72).toFixed(1)}" y="28" width="${(X(tmax)-X(72)).toFixed(1)}" height="10" rx="5" opacity=".28"></rect>
+    <rect class="${dentro?"in":"out"} bar-now" x="${X(0)}" y="28" width="${(xe-X(0)).toFixed(1)}" height="10" rx="5"></rect>
+    <line class="lim" x1="${X(72).toFixed(1)}" y1="22" x2="${X(72).toFixed(1)}" y2="44"></line>
+    <path class="mk" style="--dx:${(X(0)-xe).toFixed(1)}px" d="M${xe.toFixed(1)},26 l-5,-7 h10 Z"></path>
+    <text class="mkl" style="--dx:${(X(0)-xe).toFixed(1)}px" x="${Math.min(Math.max(xe,22),298).toFixed(1)}" y="13">${h} h</text>${ticks}</svg>`;
+  let html=`<div class="row" style="justify-content:space-between"><div><span class="label">Tiempo transcurrido</span><div class="big">${h} h ${pad(m)} min</div><span class="note">${dias?`${dias} día${dias>1?"s":""} y ${h%24} h`:"menos de un día"}</span></div><span class="status ${dentro?"in":"out"}">${dentro?"Dentro de las 72 horas":"Más de 72 horas"}</span></div>`;
+  html+=tl;
+  html+=`<div class="f"><span class="label">Fecha y hora de la agresión, como van en el formulario</span><div class="boxes">${[["Día",pad(d1.getDate())],["Mes",pad(d1.getMonth()+1)],["Año",d1.getFullYear()],["Hora",pad(d1.getHours())],["Min",pad(d1.getMinutes())]].map(([k,v])=>`<span><small>${k}</small><b>${v}</b></span>`).join("")}</div></div>`;
+  if(esSexual()){
+    if(dentro){
+      const rest=72*60-min;
+      html+=`<p class="note">Quedan <b>${Math.floor(rest/60)} h ${pad(rest%60)} min</b> para cumplir las 72 horas.</p>`;
+      html+=`<div class="cols"><div><span class="label">Toma de muestras (hasta 72 h)</span><ul>${MUESTRAS.map(x=>`<li>${x}</li>`).join("")}</ul></div><div><span class="label">Profilaxis (antes de las 72 h)</span><ul>${PRE.map(x=>`<li>${x}</li>`).join("")}</ul></div></div>`;
+    } else {
+      html+=`<div><span class="label">Después de las 72 h, el formulario prevé</span><ul style="margin:6px 0 0;padding-left:18px;font-size:14px">${POST.map(x=>`<li>${x}</li>`).join("")}</ul></div>`;
+    }
+    html+=`<p class="note">Son los apartados que el formulario permite marcar (p. 133). Las indicaciones y dosis se rigen por el protocolo vigente.</p>`;
+  } else html+=`<p class="note">En casos de violencia física, el dato sirve para la anamnesis. Las muestras y la profilaxis del formulario corresponden a delitos sexuales: cambia el tipo de caso si aplica.</p>`;
+  box.innerHTML=html;
+}
+["#hHecho","#hAten"].forEach(s=>$(s).addEventListener("input",()=>{$("#hEj").hidden=true;calc72()}));
+$("#hNow").addEventListener("click",()=>{const n=new Date();n.setSeconds(0,0);$("#hAten").value=toLocal(n);calc72()});
+
+/* ---------- Verificación ---------- */
+const CHK=[
+ {g:"Encabezado",i:["Establecimiento, nivel, red y ubicación completos","Nombres completos y matrícula profesional de quien atiende","Hora, día, mes y año del examen","Datos completos de la persona valorada (nombre, sexo, edad, estado civil, C.I., dirección, teléfono)"]},
+ {g:"Consentimiento",i:["Se explicó el consentimiento y los procedimientos","Marcado SÍ / NO, con C.I., firma y aclaración","Huella del pulgar derecho en el recuadro"]},
+ {g:"Anamnesis y relato",i:["Fecha y hora de la agresión con día, mes, año, hora y minutos","Lugar del hecho marcado o especificado en «Otros»","Casillas de sustancias, agresores, vínculo, agresión física, forcejeo y vestiduras","Breve relato con lo que refiere la persona"]},
+ {g:"Examen físico",i:["Lesiones marcadas en el diagrama con el número de la lista","Cada lesión descrita: número, ubicación, tipo, características e instrumento","Dimensiones en centímetros","La descripción escrita coincide con el diagrama"]},
+ {g:"Examen ginecológico y anal",x:true,i:["Tipo de himen identificado (a, b, c u otro)","Desgarros: completo o incompleto, reciente o antiguo, con ubicación horaria","Antiguos en azul y recientes en rojo","Región anal: forma, tono del esfínter, pliegues, fisuras o cicatrices"]},
+ {g:"Muestras y profilaxis",x:true,i:["Muestras colectadas marcadas con X","Profilaxis o tratamiento marcados según las horas transcurridas","Muestras embaladas y rotuladas","Cadena de custodia: nombre, C.I., teléfono, firma de quien recibe y fecha"]},
+ {g:"Cierre",i:["Exámenes complementarios adjuntos en fotocopia","Impresión diagnóstica escrita","Firma, aclaración, sello, C.I., celular, teléfono del establecimiento, cargo y fecha","Sello institucional","Sin abreviaturas, borrones, enmiendas ni tachaduras"]}
+];
+const marcados=new Set();
+function renderChk(){
+  const box=$("#chk");box.innerHTML="";
+  CHK.forEach((g,gi)=>{
+    if(g.x&&!esSexual())return;
+    const fs=document.createElement("fieldset");
+    fs.innerHTML=`<legend>${g.g}</legend>`+g.i.map((t,ii)=>{const id=`c${gi}_${ii}`;return `<label class="chk" for="${id}"><input type="checkbox" id="${id}" ${marcados.has(id)?"checked":""}><span>${t}</span></label>`}).join("");
+    box.appendChild(fs);
+  });
+  prog();
+}
+function prog(){
+  const all=[...document.querySelectorAll("#chk input")],ok=all.filter(x=>x.checked).length;
+  $("#pnum").textContent=`${ok} / ${all.length}`;
+  $("#pbar").style.width=(all.length?ok/all.length*100:0)+"%";
+  $("#done").hidden=!(all.length&&ok===all.length);
+}
+$("#chk").addEventListener("change",e=>{const c=e.target;if(c.type!=="checkbox")return;c.checked?marcados.add(c.id):marcados.delete(c.id);prog()});
+$("#resetChk").addEventListener("click",()=>{marcados.clear();renderChk()});
+
+/* ---------- Glosario ---------- */
+const GLOS=[
+ ["Excoriación","Lesión contusa simple, que compromete la epidermis y parte de la dermis (costra amarillenta).","Suele producirse por contacto tangencial con superficies ásperas o por las uñas.","6.1.3"],
+ ["Equimosis","Lesión contusa simple, que conserva la integridad de la piel.","El trauma rompe capilares y vénulas y produce un infiltrado hemorrágico. Si tiene forma característica, se describe como equimosis figurada.","6.1.2"],
+ ["Hematoma","Lesión contusa que se caracteriza por la extravasación sanguínea que se colecciona en planos superficiales o profundos.","","6.1.2"],
+ ["Herida contusa","Es una solución de continuidad de la piel, ocasionada por agentes contusos que comprometen la epidermis y la dermis.","Puede extenderse a planos profundos. Bordes evertidos e irregulares, con puentes dérmicos.","6.1.3"],
+ ["Herida cortante","Soluciones de continuidad de la piel, ocasionados por agentes con punta y/o filo.","","6.4.1.1"],
+ ["Herida punzante","Ocasionados por la acción del extremo agudo y/o punta de un agente de forma alargada.","Por ejemplo, un picahielo o un clavo.","6.4.1.2"],
+ ["Herida punzocortante","Ocasionados por agente(s) con borde(s) afilado(s), y que termina en un extremo agudo.","Por ejemplo, un cuchillo o una tijera.","6.4.1.3"],
+ ["Herida contuso cortante","Ocasionados por agentes que poseen una masa (peso y volumen) considerable y uno o más bordes afilados.","Por ejemplo, un hacha o un machete. Combina rasgos de herida contusa y cortante.","6.4.1.4"],
+ ["Mordedura","Resultado del mecanismo de presión y tracción producida por los dientes.","Hay que diferenciar la mordedura humana de la animal.","6.1.4"],
+ ["Quemadura","Son lesiones causadas por agentes físicos, químicos y radiaciones que lesionan la piel y otros tejidos.","","6.5"]
+];
+$("#glos").innerHTML=GLOS.map(([t,q,n,s])=>`<div><dt>${t}</dt><dd><q>${q}</q>${n?" "+n:""} <span class="src">§${s}</span></dd></div>`).join("");
+
+/* ---------- Práctica ---------- */
+const CASOS=[
+ {q:"Descripción escrita: «Presenta equimosis en el brazo.»",o:["Le falta número, cara y tercio, lado, dimensiones, coloración y posible instrumento","Está completa, porque el tipo de lesión está bien nombrado","Solo le falta la impresión diagnóstica"],a:0,e:"El instructivo pide número, ubicación anatómica, tipo, características y posible instrumento (p. 143). «En el brazo» no permite ubicar la lesión."},
+ {q:"Anamnesis, fecha de la agresión: «ayer por la noche».",o:["Es suficiente si la persona no recuerda más","Debe anotarse en números: día, mes, año, hora y minutos, lo más exacto posible","Se deja en blanco y se explica en el relato"],a:1,e:"El instructivo pide números claros, lo más exactos posible, con el ejemplo 18 – 07 – 2014 – 18:30 (p. 137)."},
+ {q:"La persona no sabe leer ni escribir. En el consentimiento se dejó la firma en blanco y se tomó la huella.",o:["Está bien, la huella reemplaza todo","Falta escribir «No sabe leer ni escribir» en la firma y su nombre completo en la aclaración","Debe firmar un familiar en su lugar"],a:1,e:"En ese caso se anota el texto «No sabe leer ni escribir», el nombre completo en la aclaración y la huella es obligatoria (p. 137)."},
+ {q:"Examen genital: desgarro himeneal reciente a las 6, dibujado con bolígrafo azul.",o:["Correcto, el color no importa","Debe remarcarse en rojo, porque es reciente","Debe dibujarse en negro"],a:1,e:"Los desgarros antiguos van en azul y los recientes en rojo (p. 141)."},
+ {q:"Diagrama: números 1 y 2 sobre el antebrazo izquierdo. Descripción escrita: solo menciona una equimosis.",o:["No hay problema, el diagrama basta","Falta describir la excoriación (n.º 1): lo escrito debe coincidir con el diagrama","Hay que borrar el número 1 del diagrama"],a:1,e:"La descripción escrita debe coincidir con lo especificado en el diagrama (p. 139). Además, el certificado no admite borrones ni tachaduras."}
+];
+$("#cases").innerHTML=CASOS.map((c,i)=>`<div class="case" data-i="${i}"><span class="label">Caso ${i+1}</span><div class="q">${c.q}</div><div class="opts">${c.o.map((x,j)=>`<button type="button" data-j="${j}">${x}</button>`).join("")}</div><p class="fb" hidden></p></div>`).join("");
+$("#cases").addEventListener("click",e=>{
+  const b=e.target.closest(".opts button");if(!b)return;
+  const box=b.closest(".case"),c=CASOS[+box.dataset.i],j=+b.dataset.j;
+  box.querySelectorAll(".opts button").forEach((x,k)=>{x.classList.remove("good","bad");if(k===c.a)x.classList.add("good")});
+  if(j!==c.a)b.classList.add("bad");
+  const fb=box.querySelector(".fb");fb.hidden=false;fb.innerHTML=(j===c.a?"<b>Correcto.</b> ":"<b>No es así.</b> ")+c.e;
+});
+
+/* ---------- Caso y vistas ---------- */
+const NOTAS={fisica:"Se muestran las secciones que aplican a todo caso. El examen genital, anal y las muestras se activan en casos de violencia sexual.",
+ sexual:"Incluye el examen ginecológico, el examen anal y las muestras y evidencias de delitos sexuales.",
+ ambas:"Usa los diagramas corporales para las lesiones físicas y, además, el examen ginecológico y anal."};
+document.querySelectorAll(".casebar .seg button").forEach(b=>b.addEventListener("click",()=>{
+  caso=b.dataset.c;
+  document.querySelectorAll(".casebar .seg button").forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));
+  $("#caseNote").textContent=NOTAS[caso];
+  $("#modeSeg").hidden=!esSexual();setModo(modo);
+  renderGuia();renderMapa();renderChk();calc72();
+}));
+const VISTAS=["guia","lesiones","horas","verificar","recursos"];
+function vista(){
+  let h=location.hash.slice(1);if(h==="mas")h="recursos";
+  const v=VISTAS.includes(h)?h:"guia";
+  document.body.dataset.v=v;fab();
+  document.querySelectorAll("[data-view]").forEach(s=>s.hidden=s.dataset.view!==v);
+  document.querySelectorAll("nav.tabs a").forEach(a=>a.dataset.v===v?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current"));
+}
+window.addEventListener("hashchange",()=>{vista();window.scrollTo(0,0)});
+
+$("#caseNote").textContent=NOTAS[caso];$("#modeSeg").hidden=true;
+renderFigs();renderClock();setHall();
+renderGuia();renderMapa();renderChk();actualizar();gActualizar();pintar();calc72();vista();
+
+})();
+</script>
+
+</body>
+</html>
