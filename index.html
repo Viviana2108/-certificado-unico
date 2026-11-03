@@ -3,11 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Guía de apoyo para el correcto llenado del Certificado Único para casos de violencia (Ley N.º 348), basada en el instructivo oficial del Ministerio de Salud de Bolivia.">
+<meta name="description" content="Guía de apoyo para médicos sobre el correcto llenado del Certificado Único para casos de violencia (Ley N.º 348), con ejemplos, ayuda para describir lesiones y cálculo de las 72 horas.">
 <meta name="author" content="Dra. Viviana Mamani Huanca">
+<meta name="theme-color" content="#1c3a8c">
+<link rel="canonical" href="https://certificado-unico-ley348.vercel.app/">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Certificado Único">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_BO">
+<meta property="og:site_name" content="Certificado Único: guía de llenado">
+<meta property="og:title" content="Certificado Único: guía de llenado para casos de violencia">
+<meta property="og:description" content="Guía de apoyo para médicos sobre el correcto llenado del Certificado Único para casos de violencia (Ley N.º 348), con ejemplos, ayuda para describir lesiones y cálculo de las 72 horas.">
+<meta property="og:url" content="https://certificado-unico-ley348.vercel.app/">
+<meta property="og:image" content="https://certificado-unico-ley348.vercel.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Certificado Único, guía de llenado. Dra. Viviana Mamani Huanca.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://certificado-unico-ley348.vercel.app/og.png">
 <title>Certificado Único: guía de llenado</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='31' fill='%231f4fe0'/%3E%3Ccircle cx='32' cy='32' r='26' fill='none' stroke='%23ffb020' stroke-width='2'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='21' fill='white'%3EVMH%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Cormorant+Garamond:wght@600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap">
 <style>
 /* Layout: una columna estrecha tipo formulario; barra superior fija con pestañas; contenido en fichas por sección del certificado */
 :root{
@@ -18,6 +37,7 @@
   --f-body:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --f-mono:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --f-serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-seal:"Cormorant Garamond","Source Serif 4",Georgia,serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#0e1222; --surface:#171d33; --ink:#eaedf7; --muted:#a0a9c3; --line:#2a3352;
@@ -38,7 +58,21 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--head);color:var(--head-ink);box-shadow:0 2px 10px rgba(20,40,120,.18)}
 header.top .wrap{padding-block:12px 0;display:flex;flex-direction:column;gap:8px}
 .brand{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.brand{flex-direction:column;gap:0!important}
+.brand{flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:flex-start;gap:12px!important}
+.brand-t{display:flex;flex-direction:column;min-width:0}
+.seal{width:46px;height:46px;flex:none;color:var(--head-ink);transition:width .2s,height .2s}
+.seal .r1{fill:none;stroke:currentColor;stroke-width:1.6}
+.seal .r2{fill:none;stroke:var(--amber);stroke-width:1.2}
+.seal .dots{fill:none;stroke:currentColor;stroke-width:1.1;stroke-dasharray:.1 3.3;stroke-linecap:round;opacity:.8}
+.seal text{font-family:var(--f-serif);font-weight:700;font-size:15.5px;fill:currentColor;text-anchor:middle;letter-spacing:.02em}
+header.top.compact .seal{width:34px;height:34px}
+/* Bienvenida de la autora */
+.welcome{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px}
+.welcome .seal{width:52px;height:52px;color:var(--accent)}
+.welcome p{margin:0;font-family:var(--f-serif);font-size:16.5px;line-height:1.55;color:var(--ink)}
+.welcome .firma{margin-top:8px;font-family:var(--f-body);font-size:13.5px;color:var(--muted)}
+.welcome .firma b{color:var(--ink);font-weight:600}
+@media (max-width:420px){.welcome{grid-template-columns:1fr}.welcome .seal{width:44px;height:44px}}
 .brand h1{font-family:var(--f-serif);font-size:21px;margin:0;font-weight:700;letter-spacing:-.005em;text-wrap:balance;line-height:1.2}
 .brand small{font-size:12.5px;color:var(--head-muted)}
 nav.tabs{display:flex;gap:2px}
@@ -55,7 +89,7 @@ main .wrap{padding-block:18px 48px;display:flex;flex-direction:column;gap:16px}
 .casebar .seg button{padding:7px 4px;font-size:13.5px}
 .vh{font-family:var(--f-serif);font-size:19px;margin:0;font-weight:700}
 /* Barra superior compacta al hacer scroll */
-header.top .brand small{transition:opacity .2s,max-height .2s;max-height:20px;overflow:hidden}
+header.top .brand small{transition:opacity .2s,max-height .2s;max-height:40px;overflow:hidden;line-height:1.3}
 header.top.compact .brand small{opacity:0;max-height:0}
 header.top.compact .wrap{padding-top:8px}
 header.top.compact .brand h1{font-size:18px}
@@ -354,15 +388,305 @@ header.top nav.tabs a{transition:color .15s,border-color .2s}
 .preview{transition:background .2s}
 .preview.bump{animation:fadein .25s}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+/* =========================================================
+   Versión 2.0: el expediente médico-legal
+   Papel blanco frío, tinta azul de bolígrafo, rojo de sello.
+   ========================================================= */
+:root{
+  --bg:#eef1f5; --surface:#ffffff; --paper:#fcfdfe; --ink:#172033; --muted:#566074; --line:#d3d9e3; --line-strong:#7d89a0;
+  --accent:#1c3a8c; --accent-soft:#e7ecf7; --accent-mid:#aebce0; --accent-deep:#132a66;
+  --red:#a3192e; --red-soft:#f8e7ea; --ok:#126b45; --ok-soft:#e3f2ea;
+  --amber:#b8860b; --amber-soft:#f8f0dc; --amber-ink:#6e4f00; --violet:#5b2bb8; --violet-soft:#efe8fb;
+  --head:#ffffff; --head-ink:#172033; --head-muted:#566074; --desk:#dfe4ec;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10141d; --surface:#171d29; --paper:#1a2130; --ink:#e6e9f0; --muted:#9ba5b8; --line:#2b3446; --line-strong:#66738f;
+  --accent:#8eaaf2; --accent-soft:#1e2a48; --accent-mid:#34477a; --accent-deep:#0d1530;
+  --red:#ff8a98; --red-soft:#3a1a22; --ok:#5fd3a0; --ok-soft:#14302a;
+  --amber:#e7b64b; --amber-soft:#33290f; --amber-ink:#f2d58c; --violet:#b79bff; --violet-soft:#291f45;
+  --head:#171d29; --head-ink:#e6e9f0; --head-muted:#9ba5b8; --desk:#0b0f17; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10141d; --surface:#171d29; --paper:#1a2130; --ink:#e6e9f0; --muted:#9ba5b8; --line:#2b3446; --line-strong:#66738f;
+  --accent:#8eaaf2; --accent-soft:#1e2a48; --accent-mid:#34477a; --accent-deep:#0d1530;
+  --red:#ff8a98; --red-soft:#3a1a22; --ok:#5fd3a0; --ok-soft:#14302a;
+  --amber:#e7b64b; --amber-soft:#33290f; --amber-ink:#f2d58c; --violet:#b79bff; --violet-soft:#291f45;
+  --head:#171d29; --head-ink:#e6e9f0; --head-muted:#9ba5b8; --desk:#0b0f17; color-scheme:dark}
+
+/* Carátula del expediente */
+header.top{background:var(--head);color:var(--head-ink);box-shadow:none;border-top:4px double var(--accent);border-bottom:1px solid var(--line-strong)}
+header.top .wrap{padding-top:14px}
+.brand h1{font-size:23px;letter-spacing:-.01em}
+.seal{color:var(--accent)}
+.seal .r2{stroke:var(--red)}
+header.top :focus-visible{outline-color:var(--accent)}
+/* Solapas de archivador */
+nav.tabs{gap:4px;align-items:flex-end;margin-top:4px}
+nav.tabs a{border:1px solid var(--line);border-bottom:0;border-radius:7px 7px 0 0;background:var(--bg);color:var(--muted);padding:8px 2px 9px;margin-bottom:-1px;transition:background .15s,color .15s,padding .15s}
+nav.tabs a:hover{color:var(--ink)}
+nav.tabs a[aria-current="page"]{background:var(--surface);color:var(--accent);border-color:var(--line-strong);border-bottom:1px solid var(--surface);padding-top:11px;box-shadow:inset 0 3px 0 var(--accent)}
+.folio{float:right;font-family:var(--f-body);font-size:12px;font-weight:500;color:var(--muted);margin-top:6px;font-variant-numeric:tabular-nums}
+.mapa-head h2,.vh{display:block;width:100%;border-bottom:1px solid var(--line-strong);padding-bottom:6px}
+.mapa-head h2{flex:1 1 100%}
+
+/* Botones y selectores con aire de formulario */
+.seg{border-radius:4px;border-color:var(--line-strong)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:#fff}
+.casebar .label{color:var(--ink)}
+.btn{border-radius:4px}
+select,input,textarea{border-radius:3px;background:var(--paper);border-color:var(--line-strong)}
+
+/* Secciones como hojas del formulario */
+details.sec{border-radius:3px;border-color:var(--line-strong);background:var(--paper)}
+details.sec[open]{box-shadow:0 1px 0 var(--line),0 8px 20px rgba(20,30,60,.07)}
+details.sec>summary:hover{background:var(--accent-soft);border-radius:3px}
+.num{border-radius:50%;width:28px;height:28px;background:transparent!important;color:var(--accent);border:1.5px solid var(--accent);font-size:12px}
+details.sec.sx .num{color:var(--violet);border-color:var(--violet)}
+.body h4{color:var(--ink);font-family:var(--f-serif);font-size:15px}
+.callout{border-radius:0;background:transparent;border-left-width:3px}
+.callout.amber{background:var(--amber-soft)}
+.panel{border-radius:3px;border-color:var(--line-strong);border-top:3px double var(--accent)}
+[data-view="horas"] .panel{border-top-color:var(--amber)}
+
+/* Ejemplo bien llenado: escrito sobre las líneas punteadas del certificado */
+.ej{border-radius:2px;border:1px solid var(--line-strong);border-left:3px solid var(--ok);background:var(--paper);padding:14px 16px}
+.ej dl{gap:10px}
+.ej dl>div{grid-template-columns:minmax(110px,36%) 1fr;align-items:end}
+.ej dt{font-size:12px;color:var(--muted);padding-bottom:3px}
+.ej dd{border-bottom:1.5px dotted var(--line-strong);padding:0 2px 2px;font-size:15.5px;color:var(--accent);font-weight:600}
+@media (max-width:480px){.ej dl>div{grid-template-columns:1fr;gap:2px}.ej dt{padding-bottom:0}}
+.seg button[aria-pressed="true"]{color:var(--surface)}
+.seal text.mono{font-family:var(--f-seal);font-weight:700;font-size:15px;letter-spacing:.05em;fill:currentColor;text-anchor:middle}
+.seal .mono-rule{stroke:var(--red);stroke-width:.9;stroke-linecap:round}
+.seal .ringtxt{font-family:var(--f-body);font-size:4.1px;font-weight:600;letter-spacing:.06em;fill:currentColor}
+.seal.big .r2{stroke-width:.9}
+.mal{border-radius:2px;background:transparent;border-style:dashed}
+.mal .ej-tag{background:var(--red-soft)}
+
+/* Mapa: hojas sobre el escritorio */
+.mapa{background:var(--desk);animation:none;border-radius:4px;border:1px solid var(--line)}
+.sheet{border-radius:1px;box-shadow:0 1px 2px rgba(20,30,60,.15),0 6px 14px rgba(20,30,60,.12);background:var(--paper)}
+.sheet::before{background:var(--accent);height:2px;left:8px;right:8px;top:6px}
+.sheet .pg{padding-top:4px}
+.blk{background:transparent;border:1px solid var(--line-strong);border-radius:1px;background-image:repeating-linear-gradient(to bottom,transparent 0 13px,var(--line) 13px 14px);background-position:0 17px}
+.blk b{color:var(--accent)}
+.blk:hover{background-color:var(--accent-soft)}
+.blk.seen{background-color:var(--ok-soft);border-color:var(--ok)}
+.blk.seen b::after{content:" ✓";color:var(--ok)}
+.mapa-legend i{border-radius:1px}
+
+/* Silueta de trazo fino, como el diagrama impreso */
+.zone{fill:var(--paper);stroke:var(--ink);stroke-width:.8}
+.zone:hover{fill:var(--accent-soft)}
+.zone.on{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.8}
+.skin{stroke:var(--line-strong)}
+.figs svg{filter:none}
+
+/* Reloj y ruta crítica con el mismo trazo */
+.hr circle{fill:var(--paper);stroke:var(--line-strong)}
+.ring{stroke:var(--line)}
+.fl-box rect{fill:var(--paper);stroke:var(--line-strong)}
+.fl-box.key rect{fill:var(--accent);stroke:var(--accent)}
+.fl-box.key.soft rect{fill:var(--accent-soft);stroke:var(--accent)}
+
+/* Bienvenida como nota manuscrita al margen */
+.welcome{border-radius:2px;background:var(--paper);border:1px solid var(--line-strong);border-left:3px solid var(--accent)}
+.welcome .seal .r2{stroke:var(--red)}
+
+/* Sello «REVISADO» al terminar la verificación */
+.done{position:relative;background:var(--paper);color:var(--ink);border:1px solid var(--line-strong);border-radius:2px;padding:18px 16px 18px 150px;min-height:136px;display:flex;align-items:center;font-weight:500}
+.stamp{position:absolute;left:14px;top:50%;width:120px;height:120px;margin-top:-60px;border-radius:50%;border:3px double var(--red);color:var(--red);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;transform:rotate(-12deg);opacity:.92;font-family:var(--f-serif)}
+.stamp .st-top,.stamp .st-bot{font-size:11px;font-weight:600;letter-spacing:.06em}
+.stamp .st-mid{font-size:17px;font-weight:700;letter-spacing:.04em;border-top:1.5px solid currentColor;border-bottom:1.5px solid currentColor;padding:1px 6px}
+.done:not([hidden]) .stamp{animation:stampin .55s cubic-bezier(.3,1.4,.5,1) both}
+@keyframes stampin{0%{opacity:0;transform:rotate(-12deg) scale(2.2)}60%{opacity:1;transform:rotate(-12deg) scale(.94)}100%{opacity:.92;transform:rotate(-12deg) scale(1)}}
+@media (max-width:420px){.done{padding:150px 14px 16px;text-align:center;justify-content:center}.stamp{left:50%;top:14px;margin:0 0 0 -60px}}
+
+footer{border-top:3px double var(--line-strong)}
+.skip{position:absolute;left:12px;top:-60px;z-index:20;background:var(--accent);color:#fff;padding:10px 14px;border-radius:4px;font-weight:600;text-decoration:none}
+.skip:focus{top:calc(10px + env(safe-area-inset-top,0px))}
+main:focus{outline:none}
+:focus-visible{outline:2.5px solid var(--accent);outline-offset:2px}
+.zone:focus-visible{outline:none;stroke:var(--accent);stroke-width:2.4}
+.hr:focus-visible circle{stroke:var(--accent);stroke-width:3}
+.chk{min-height:44px}
+.opts button{min-height:44px}
+.fab{border-radius:4px}
+@media (prefers-reduced-motion:reduce){.done:not([hidden]) .stamp{animation:none}}
+
+.fl-box.key:not(.soft) text{fill:var(--surface)}
+main{overflow-x:clip}
+/* Silueta viva: marcas numeradas */
+.marks{pointer-events:none}
+.mark circle{fill:var(--accent);stroke:var(--paper);stroke-width:1.4}
+.mark text{fill:#fff;font-family:var(--f-body);font-weight:700;font-size:8px;text-anchor:middle}
+.mark.ej circle{fill:var(--paper);stroke:var(--accent)}
+.mark.ej text{fill:var(--accent)}
+.mark.nuevo{transform-box:fill-box;transform-origin:center;animation:marca .45s cubic-bezier(.3,1.5,.5,1)}
+@keyframes marca{0%{opacity:0;transform:scale(2.4)}100%{opacity:1;transform:scale(1)}}
+.fignote{font-size:12.5px;color:var(--muted);text-align:center}
+
+/* 72 h en vivo */
+.live{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted)}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 var(--ok);animation:latido 2s infinite}
+@keyframes latido{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--ok) 60%,transparent)}70%{box-shadow:0 0 0 7px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.status.warn{background:var(--amber-soft);color:var(--amber-ink)}
+#hRes.quieto *{animation:none!important}
+
+/* Ruta crítica paso a paso */
+#flowSvg [data-s]{transition:opacity .35s}
+#flowSvg.stepping [data-s]{opacity:.14}
+#flowSvg.stepping [data-s].on{opacity:1}
+#flowSvg.stepping .fl-box.on rect{stroke:var(--accent);stroke-width:2.2}
+#flowSvg.stepping line.on{stroke:var(--accent);stroke-width:2;opacity:1}
+.steps{display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--line);padding-top:10px}
+.step-t{margin:0;font-family:var(--f-serif);font-size:15.5px;min-height:3.2em}
+.step-b{justify-content:space-between}
+#stepN{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* Hojas del certificado deslizables */
+.cnav{display:flex;align-items:center;justify-content:center;gap:14px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.cbtn{width:40px;height:40px;border-radius:50%;border:1px solid var(--line-strong);background:var(--paper);color:var(--accent);font-size:22px;line-height:1;cursor:pointer}
+#hojaBody .cpages{flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;padding:6px 6% 14px;margin-inline:-16px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+#hojaBody .cpage{flex:0 0 88%;scroll-snap-align:center;transition:transform .3s,opacity .3s;transform:scale(.96);opacity:.7}
+#hojaBody .cpage.activa{transform:none;opacity:1}
+@media (min-width:900px){#hojaBody .cpage{flex-basis:46%}}
+
+/* Tinta que se escribe al abrir un ejemplo */
+details.sec[open] .ej dd{animation:tinta .7s cubic-bezier(.4,0,.2,1) both}
+details.sec[open] .ej div:nth-child(2) dd{animation-delay:.12s}
+details.sec[open] .ej div:nth-child(3) dd{animation-delay:.24s}
+details.sec[open] .ej div:nth-child(4) dd{animation-delay:.36s}
+details.sec[open] .ej div:nth-child(5) dd{animation-delay:.48s}
+details.sec[open] .ej div:nth-child(n+6) dd{animation-delay:.6s}
+@keyframes tinta{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+
+/* Pestañas: la tinta se desliza a la pestaña activa y el folio entra desde su lado */
+nav.tabs{position:relative}
+.tab-ink{position:absolute;top:0;left:0;height:3px;background:var(--accent);border-radius:3px 3px 0 0;z-index:2;transition:transform .35s cubic-bezier(.4,0,.2,1),width .35s cubic-bezier(.4,0,.2,1);pointer-events:none}
+nav.tabs a[aria-current="page"]{box-shadow:none}
+[data-view].der:not([hidden]){animation:desdeDer .35s cubic-bezier(.2,.7,.2,1) both}
+[data-view].izq:not([hidden]){animation:desdeIzq .35s cubic-bezier(.2,.7,.2,1) both}
+@keyframes desdeDer{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
+@keyframes desdeIzq{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:none}}
+body.guardia .tab-ink{transition:none}
+@media (prefers-reduced-motion:reduce){.tab-ink,#flowSvg [data-s],#hojaBody .cpage{transition:none}details.sec[open] .ej dd,.mark.nuevo,.live i{animation:none}}
+
+/* Buscador */
+.search{display:flex;flex-direction:column;gap:6px}
+.search label{font-size:13px;font-weight:600}
+.search-row{display:flex;align-items:center;gap:10px}
+.search-row input{flex:1;min-width:0}
+#qCount{font-size:13px;color:var(--muted);white-space:nowrap}
+mark.hl{background:var(--amber-soft);color:inherit;box-shadow:0 0 0 1px var(--amber);border-radius:2px}
+
+/* Certificado completo de ejemplo */
+details.hoja{border-left:3px solid var(--accent)}
+details.hoja .num{font-size:14px}
+.cpages{display:flex;flex-direction:column;gap:16px}
+.cpage{position:relative;overflow:hidden;background:var(--paper);border:1px solid var(--line-strong);box-shadow:0 2px 8px rgba(20,30,60,.08);padding:18px 16px 16px;display:flex;flex-direction:column;gap:12px}
+.cpg{position:absolute;top:8px;right:10px;font-size:11px;color:var(--muted)}
+.wm{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-24deg);font-family:var(--f-serif);font-size:44px;font-weight:700;letter-spacing:.06em;color:var(--red);opacity:.09;white-space:nowrap;pointer-events:none;user-select:none}
+.ctitle{margin:4px 0 0;font-family:var(--f-serif);font-size:15px;text-align:center;text-wrap:balance}
+.cs{display:flex;flex-direction:column;gap:6px}
+.cs h5{margin:0;font-size:12.5px;font-weight:700;color:var(--ink);border-bottom:1px solid var(--line-strong);padding-bottom:3px}
+.cf{display:grid;grid-template-columns:minmax(100px,34%) 1fr;gap:8px;align-items:end;font-size:12.5px}
+.cl{color:var(--muted);padding-bottom:2px}
+.cv{border-bottom:1.3px dotted var(--line-strong);min-height:20px;font-family:var(--f-serif);font-weight:600;font-size:14px;color:var(--accent);padding:0 2px 1px;line-height:1.4}
+.cf.blank .cv{min-height:18px}
+@media (max-width:480px){.cf{grid-template-columns:1fr;gap:0}}
+.cblank{border:1px dashed var(--line-strong);padding:12px;text-align:center;font-size:12.5px;color:var(--muted);font-style:italic}
+.cdiag{display:flex;gap:16px;align-items:center}
+.csil{width:96px;height:auto;flex:none}
+.csil path{fill:var(--paper);stroke:var(--ink);stroke-width:.9}
+.csil circle{fill:var(--paper);stroke:var(--accent);stroke-width:1.6}
+.csil text{font-family:var(--f-serif);font-weight:700;font-size:10px;fill:var(--accent);text-anchor:middle}
+.cleg{font-size:12.5px;color:var(--muted);line-height:1.6}
+.cleg b{color:var(--ink)}
+body.guardia details.hoja,body.guardia .search{display:none}
+
+/* Aviso del modo guardia, con salida a la guía completa */
+.gbar{display:none;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;background:var(--accent-soft);border:1px solid var(--accent);border-radius:4px;padding:10px 12px;font-size:15px}
+body.guardia .gbar{display:flex}
+.gbar button{font:inherit;font-size:15px;font-weight:700;background:var(--accent);color:var(--surface);border:0;border-radius:4px;padding:10px 14px;cursor:pointer;min-height:44px}
+.brand .seal{cursor:pointer}
+/* Botón «Modo guardia» */
+.gbtn{margin-left:auto;flex:none;display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:12.5px;font-weight:600;color:var(--accent);background:var(--paper);border:1px solid var(--line-strong);border-radius:999px;padding:7px 11px;cursor:pointer;min-height:36px}
+.gbtn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+.gbtn[aria-pressed="true"]{background:var(--accent);color:var(--surface);border-color:var(--accent)}
+@media (max-width:400px){.gbtn{font-size:0;gap:0;padding:8px}.gbtn svg{width:18px;height:18px}}
+
+/* Portada de la primera visita */
+.portada{position:fixed;inset:0;z-index:40;background:var(--bg);overflow:auto;display:flex;align-items:center;justify-content:center;padding:calc(24px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.portada::before{content:"";position:fixed;inset:0 0 auto;height:6px;border-top:6px double var(--accent)}
+.portada-in{max-width:520px;width:100%;display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;animation:rise .5s cubic-bezier(.2,.7,.2,1) both}
+.seal.big{width:96px;height:96px;color:var(--accent)}
+.seal.big .r2{stroke:var(--red)}
+.p-k{margin:6px 0 0;font-size:14px;font-weight:600;color:var(--muted)}
+.portada h2{font-family:var(--f-serif);font-size:40px;line-height:1.05;margin:0;letter-spacing:-.01em}
+.p-sub{margin:0 0 8px;color:var(--muted);font-size:16px;max-width:42ch}
+.p-opts{display:flex;flex-direction:column;gap:10px;width:100%;margin-top:6px}
+.p-btn{display:flex;flex-direction:column;gap:3px;text-align:left;font:inherit;padding:16px 18px;border-radius:6px;border:1px solid var(--line-strong);background:var(--paper);color:var(--ink);cursor:pointer;transition:transform .12s,border-color .15s}
+.p-btn b{font-family:var(--f-serif);font-size:19px}
+.p-btn span{font-size:14px;color:var(--muted)}
+.p-btn.now{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.p-btn.now span{color:var(--surface);opacity:.85}
+.p-btn:hover{transform:translateY(-1px);border-color:var(--accent)}
+.p-by{margin:14px 0 0;font-size:13.5px;color:var(--muted)}
+
+/* Ilustraciones de trazo fino */
+.ill{margin:0;display:flex;flex-direction:column;gap:6px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:2px;padding:12px}
+.ill svg{width:100%;max-width:340px;height:auto;align-self:center;display:block}
+.ill .ln{fill:none;stroke:currentColor;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.ill .thin{fill:none;stroke:var(--line-strong);stroke-width:1}
+.ill .dot{fill:none;stroke:var(--line-strong);stroke-width:1.2;stroke-dasharray:1.5 3;stroke-linecap:round}
+.ill .acc{fill:none;stroke:var(--accent);stroke-width:1.6;stroke-linecap:round}
+.ill .red{fill:none;stroke:var(--red);stroke-width:2.4;stroke-linecap:round}
+.ill .blue{fill:none;stroke:var(--accent);stroke-width:2.4;stroke-linecap:round}
+.ill .mk{fill:var(--surface);stroke:var(--accent);stroke-width:1.4}
+.ill text{font-family:var(--f-body);font-size:10.5px;fill:var(--muted)}
+.ill text.b{fill:var(--ink);font-weight:600}
+.ill text.c{text-anchor:middle}
+.ill text.n{fill:var(--accent);font-weight:700;text-anchor:middle;font-size:10px}
+.ill figcaption{font-size:13px;color:var(--muted);text-align:center}
+
+/* Modo guardia: letra grande, más contraste, solo lo esencial */
+body.guardia{--muted:#323b4e;--line-strong:#4f5a70;font-size:17px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) body.guardia{--muted:#cfd5e0;--line-strong:#8692aa}}
+:root[data-theme="dark"] body.guardia{--muted:#cfd5e0;--line-strong:#8692aa}
+body.guardia .welcome,body.guardia .mapa-wrap,body.guardia .ill,body.guardia .mal,body.guardia .mapa-legend,body.guardia .fuentes{display:none}
+body.guardia nav.tabs a{font-size:15px;padding-block:11px 12px}
+body.guardia .st{font-size:19px}
+body.guardia .st small,body.guardia .note,body.guardia .callout,body.guardia .chk{font-size:16.5px}
+body.guardia .body,body.guardia .body li{font-size:17px}
+body.guardia select,body.guardia input,body.guardia .preview,body.guardia .ej dd,body.guardia .out{font-size:17px}
+body.guardia .f label,body.guardia .f .flabel,body.guardia .label{font-size:15px;color:var(--ink)}
+body.guardia .chk input{width:24px;height:24px}
+body.guardia .seg button{font-size:15px;padding-block:10px}
+body.guardia *,body.guardia *::before,body.guardia *::after{animation:none!important;transition:none!important}
 </style>
 <style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
 </head>
 <body>
 
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<div class="portada" id="portada" role="dialog" aria-modal="true" aria-labelledby="portadaT" hidden>
+  <div class="portada-in">
+    <svg class="seal big" viewBox="0 0 60 60" aria-hidden="true"><defs><path id="ringTop" d="M30,52.8 A22.8,22.8 0 0,1 30,7.2 A22.8,22.8 0 0,1 30,52.8"></path><path id="ringBot" d="M4,30 A26,26 0 0,0 56,30"></path></defs><circle class="r1" cx="30" cy="30" r="28"></circle><circle class="r2" cx="30" cy="30" r="20.6"></circle><text class="ringtxt"><textPath href="#ringTop" startOffset="50%" text-anchor="middle">DRA. VIVIANA MAMANI HUANCA</textPath></text><text class="mono" x="30" y="35.2">VMH</text><line class="mono-rule" x1="23.5" y1="39.4" x2="36.5" y2="39.4"></line></svg>
+    <p class="p-k">Ley N.º 348, para el personal médico</p>
+    <h2 id="portadaT">Certificado Único</h2>
+    <p class="p-sub">Guía de llenado para casos de violencia, basada en el instructivo oficial del Ministerio de Salud.</p>
+    <div class="p-opts">
+      <button type="button" class="p-btn now" data-go="ahora"><b>Estoy llenando un certificado ahora</b><span>Modo guardia: describir lesiones y verificar antes de firmar</span></button>
+      <button type="button" class="p-btn" data-go="aprender"><b>Quiero aprender a llenarlo</b><span>Guía sección por sección, con ejemplos</span></button>
+    </div>
+    <p class="p-by">Dra. Viviana Mamani Huanca</p>
+  </div>
+</div>
 <header class="top">
   <div class="wrap">
-    <div class="brand"><h1>Certificado Único</h1><small>Guía de llenado para casos de violencia, Ley N.º 348</small></div>
-    <nav class="tabs" aria-label="Secciones">
+    <div class="brand"><svg class="seal" viewBox="0 0 60 60" role="img" aria-label="Sello de la autora, Dra. Viviana Mamani Huanca"><circle class="r1" cx="30" cy="30" r="28"></circle><circle class="dots" cx="30" cy="30" r="24.5"></circle><circle class="r2" cx="30" cy="30" r="21"></circle><text class="mono" x="30" y="35.2">VMH</text><line class="mono-rule" x1="23.5" y1="39.4" x2="36.5" y2="39.4"></line></svg><div class="brand-t"><h1>Certificado Único</h1><small>Guía de llenado para casos de violencia, Ley N.º 348</small></div><button type="button" class="gbtn" id="guardiaBtn" aria-pressed="false" title="Letra más grande, más contraste y solo lo esencial"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.5"></circle><path d="M10 5.5v4.8l3 1.8"></path></svg>Modo guardia</button></div>
+    <nav class="tabs" aria-label="Secciones"><span class="tab-ink" id="tabInk" aria-hidden="true"></span>
       <a href="#guia" data-v="guia">Guía</a>
       <a href="#lesiones" data-v="lesiones">Lesiones</a>
       <a href="#horas" data-v="horas">72 h</a>
@@ -372,8 +696,9 @@ header.top nav.tabs a{transition:color .15s,border-color .2s}
   </div>
 </header>
 
-<main>
+<main id="contenido" tabindex="-1">
   <div class="wrap">
+    <div class="gbar" id="gbar" role="status"><span><b>Modo guardia activo.</b> Solo lo esencial, con letra grande.</span><button type="button" id="gBack">Volver a aprender</button></div>
     <div class="casebar">
       <span class="label" id="caseLbl">Caso</span>
       <div class="seg" role="group" aria-labelledby="caseLbl">
@@ -386,13 +711,21 @@ header.top nav.tabs a{transition:color .15s,border-color .2s}
 
     <!-- GUÍA -->
     <section data-view="guia" class="stack">
+      <div class="welcome">
+        <svg class="seal" viewBox="0 0 60 60" aria-hidden="true"><circle class="r1" cx="30" cy="30" r="28"></circle><circle class="dots" cx="30" cy="30" r="24.5"></circle><circle class="r2" cx="30" cy="30" r="21"></circle><text class="mono" x="30" y="35.2">VMH</text><line class="mono-rule" x1="23.5" y1="39.4" x2="36.5" y2="39.4"></line></svg>
+        <div><p>Preparé esta guía a partir de mi investigación sobre el registro del Certificado Único. Un certificado incompleto o confuso puede perder valor como prueba, y quien lo paga es la persona que sufrió la violencia. Aquí reuní lo que pide el instructivo oficial, con ejemplos, para que llenarlo bien sea más sencillo, incluso en plena guardia.</p>
+        <p class="firma"><b>Dra. Viviana Mamani Huanca</b></p></div>
+      </div>
       <div class="mapa-wrap">
         <div class="mapa-head"><h2>Mapa del certificado</h2><span>Las cuatro hojas del formulario. Toca una sección para abrirla.</span></div>
         <div class="mapa" id="mapa"></div>
         <div class="mapa-legend"><span><i></i>Por revisar</span><span><i class="s"></i>Revisada</span><span><i class="n"></i>No aplica a este tipo de caso</span></div>
       </div>
+      <details class="sec hoja" id="hoja"><summary><span class="num">✎</span><span class="st">Certificado completo de ejemplo<small>Las cuatro hojas llenadas con el caso ficticio</small></span><span class="chev">›</span></summary><div class="body" id="hojaBody"></div></details>
       <div class="callout amber"><b>Reglas del instructivo:</b> letra clara, sin abreviaturas, borrones, enmiendas ni tachaduras. Lo que no pueda consignarse se deja en blanco. <span class="src">Anexo 2, pp. 136 y 144</span><br><b>Ejemplos:</b> siguen un caso ficticio de una mujer de 34 años agredida por su ex pareja; los del examen genital, anal y muestras, otro caso ficticio de violencia sexual en una adulta.</div>
+      <div class="search"><label for="q">Buscar en la guía</label><div class="search-row"><input id="q" type="search" placeholder="Ej.: huella, himen, custodia" autocomplete="off"><span id="qCount" aria-live="polite"></span></div></div>
       <div id="secs" class="stack"></div>
+      <p class="empty" id="qNone" hidden>No encontré esa palabra en la guía. Prueba con otra, por ejemplo «firma» o «muestras».</p>
     </section>
 
     <!-- LESIONES -->
@@ -408,7 +741,7 @@ header.top nav.tabs a{transition:color .15s,border-color .2s}
         <p class="note">Una ayuda para no olvidar ningún dato de la lesión. El texto es ilustrativo: revísalo y ajústalo a lo que observas antes de escribirlo en el certificado.</p>
         <form class="panel" id="lesForm" autocomplete="off">
           <div class="figcol"><div class="seg figtoggle" role="group" aria-label="Vista de la silueta" id="figTog"><button type="button" data-f="A" aria-pressed="true">Anterior</button><button type="button" data-f="P" aria-pressed="false">Posterior</button></div><div class="figs" id="figs" data-show="A"></div>
-          <span class="chip" id="zoneChip">Toca una zona de la silueta</span></div>
+          <span class="chip" id="zoneChip">Toca una o más zonas de la silueta</span><span class="fignote" id="figNote" hidden>Los números marcados son los de tu descripción escrita.</span></div>
           <div class="grid">
             <div class="f">
               <label for="fReg">Región del formulario</label>
@@ -420,8 +753,8 @@ header.top nav.tabs a{transition:color .15s,border-color .2s}
             </div>
             <div class="f full">
               <label for="fLoc">Ubicación anatómica precisa</label>
-              <input id="fLoc" type="text" placeholder="cara anterior del tercio medio del brazo derecho">
-              <span class="hint">La silueta propone un texto base. Precisa el tercio o la región exacta.</span>
+              <input id="fLoc" type="text" placeholder="Ej.: cara anterior del tercio medio del brazo derecho">
+              <span class="hint">La silueta propone un texto base. Precisa el tercio o la región exacta. Para lesiones en los dos lados, toca ambas zonas.</span>
             </div>
             <div class="f">
               <label for="fCant">Número de lesiones</label>
@@ -432,8 +765,13 @@ header.top nav.tabs a{transition:color .15s,border-color .2s}
               <select id="fForma"></select>
             </div>
             <div class="f">
-              <label for="fL">Dimensiones (cm)</label>
+              <label for="fL" id="lblDims">Dimensiones (cm)</label>
               <div class="dims"><input id="fL" type="number" step="0.1" min="0" placeholder="largo" inputmode="decimal" aria-label="Largo en cm"><span>×</span><input id="fA" type="number" step="0.1" min="0" placeholder="ancho" inputmode="decimal" aria-label="Ancho en cm"></div>
+            </div>
+            <div class="f full" id="wMed" hidden>
+              <label for="fMed">Medidas de cada lesión (opcional)</label>
+              <input id="fMed" type="text" placeholder="Ej.: 2 × 1; 1,5 × 1; 1 × 0,8" inputmode="decimal">
+              <span class="hint">Separa cada medida con punto y coma, en centímetros. Si las anotas, reemplazan a «la de mayor tamaño».</span>
             </div>
             <div class="f">
               <label for="fDir">Dirección (opcional)</label>
@@ -453,11 +791,11 @@ header.top nav.tabs a{transition:color .15s,border-color .2s}
             </div>
             <div class="f full">
               <label for="fOtras">Otras características (opcional)</label>
-              <input id="fOtras" type="text" placeholder="con costra serohemática, dolorosa a la palpación">
+              <input id="fOtras" type="text" placeholder="Ej.: con costra serohemática">
             </div>
           </div>
           <div class="f"><span class="label">Vista previa</span><div class="preview" id="prev"></div></div>
-          <ul class="warns" id="warns"></ul>
+          <ul class="warns" id="warns" aria-live="polite"></ul>
           <div class="row">
             <button class="btn" type="submit" id="addBtn">Agregar a la descripción</button>
             <button class="btn quiet" type="button" id="clrForm">Limpiar campos</button>
@@ -512,11 +850,11 @@ header.top nav.tabs a{transition:color .15s,border-color .2s}
             </div>
             <div class="f full">
               <label for="gOtras">Otras características (opcional)</label>
-              <input id="gOtras" type="text" placeholder="bordes equimóticos, con coágulos; esfínter con tono conservado">
+              <input id="gOtras" type="text" placeholder="Ej.: bordes equimóticos, con coágulos">
             </div>
           </div>
           <div class="f"><span class="label">Vista previa</span><div class="preview" id="gPrev"></div></div>
-          <ul class="warns" id="gWarns"></ul>
+          <ul class="warns" id="gWarns" aria-live="polite"></ul>
           <div class="row"><button class="btn" type="submit" id="gAdd">Agregar a la descripción</button></div>
         </form>
       </div>
@@ -552,7 +890,7 @@ header.top nav.tabs a{transition:color .15s,border-color .2s}
         </div>
         <div class="row"><button class="btn quiet" type="button" id="hNow">Atención: ahora</button><span class="ex" id="hEj">Ejemplo cargado: cámbialo por los datos reales</span></div>
       </div>
-      <div class="panel" id="hRes"></div>
+      <div class="panel" id="hRes" aria-live="polite"></div>
     </section>
 
     <!-- VERIFICAR -->
@@ -561,7 +899,7 @@ header.top nav.tabs a{transition:color .15s,border-color .2s}
       <p class="note">Repasa el certificado antes de firmarlo y entregarlo.</p>
       <div class="prog"><div class="bar"><i id="pbar"></i></div><span id="pnum">0 / 0</span></div>
       <div id="chk" class="stack" style="gap:10px"></div>
-      <div class="done" id="done" hidden>Todo revisado. El certificado se entrega al personal policial, a la fiscalía o a la autoridad competente, y será homologado por un médico forense.</div>
+      <div class="done" id="done" hidden><div class="stamp" aria-hidden="true"><span class="st-top">Certificado</span><span class="st-mid">REVISADO</span><span class="st-bot">VMH</span></div>Todo revisado. El certificado se entrega al personal policial, a la fiscalía o a la autoridad competente, y será homologado por un médico forense.</div>
       <div><button class="btn quiet" type="button" id="resetChk">Desmarcar todo</button></div>
     </section>
 
@@ -572,42 +910,44 @@ header.top nav.tabs a{transition:color .15s,border-color .2s}
         <summary><span class="num">A</span><span class="st">Ruta crítica<small>Atención a víctimas de violencia sexual</small></span><span class="chev">›</span></summary>
         <div class="body">
           <figure class="flow">
-            <svg viewBox="0 0 340 410" role="img" aria-label="La víctima llega al establecimiento de salud directamente o derivada por la Policía FELCV o por la Defensoría o el SLIM; el establecimiento las llama, brinda atención, recoge evidencia, llena el Certificado Único y, si corresponde, realiza la interrupción legal del embarazo; las evidencias van con cadena de custodia al IDIF, luego a la Fiscalía y al Tribunal de sentencia.">
+            <svg viewBox="0 0 340 410" id="flowSvg" role="img" aria-label="La víctima llega al establecimiento de salud directamente o derivada por la Policía FELCV o por la Defensoría o el SLIM; el establecimiento las llama, brinda atención, recoge evidencia, llena el Certificado Único y, si corresponde, realiza la interrupción legal del embarazo; las evidencias van con cadena de custodia al IDIF, luego a la Fiscalía y al Tribunal de sentencia.">
               <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="currentColor"></path></marker></defs>
-              <g class="fl-box"><rect x="105" y="8" width="130" height="38" rx="19"></rect><text x="170" y="31">Víctima</text></g>
-              <g class="fl-box"><rect x="4" y="92" width="80" height="44" rx="6"></rect><text x="44" y="111">Policía</text><text x="44" y="126" class="fl-sub">FELCV</text></g>
-              <g class="fl-box key"><rect x="114" y="86" width="112" height="56" rx="6"></rect><text x="170" y="108">Establecimiento</text><text x="170" y="124">de salud</text></g>
-              <g class="fl-box"><rect x="256" y="92" width="80" height="44" rx="6"></rect><text x="296" y="111">Defensoría</text><text x="296" y="126" class="fl-sub">o SLIM</text></g>
+              <g class="fl-box" data-s="1"><rect x="105" y="8" width="130" height="38" rx="19"></rect><text x="170" y="31">Víctima</text></g>
+              <g class="fl-box" data-s="1 2 5"><rect x="4" y="92" width="80" height="44" rx="6"></rect><text x="44" y="111">Policía</text><text x="44" y="126" class="fl-sub">FELCV</text></g>
+              <g class="fl-box key" data-s="1 2 3"><rect x="114" y="86" width="112" height="56" rx="6"></rect><text x="170" y="108">Establecimiento</text><text x="170" y="124">de salud</text></g>
+              <g class="fl-box" data-s="1 2"><rect x="256" y="92" width="80" height="44" rx="6"></rect><text x="296" y="111">Defensoría</text><text x="296" y="126" class="fl-sub">o SLIM</text></g>
               <g class="fl-ln">
-                <line x1="140" y1="44" x2="64" y2="90" marker-end="url(#ah)"></line>
-                <line x1="170" y1="46" x2="170" y2="84" marker-end="url(#ah)"></line>
-                <line x1="200" y1="44" x2="276" y2="90" marker-end="url(#ah)"></line>
-                <line x1="84" y1="104" x2="112" y2="104" marker-end="url(#ah)"></line>
-                <line x1="256" y1="104" x2="228" y2="104" marker-end="url(#ah)"></line>
-                <line x1="114" y1="128" x2="86" y2="128" marker-end="url(#ah)" class="dash"></line>
-                <line x1="226" y1="128" x2="254" y2="128" marker-end="url(#ah)" class="dash"></line>
+                <line data-s="1" x1="140" y1="44" x2="64" y2="90" marker-end="url(#ah)"></line>
+                <line data-s="1" x1="170" y1="46" x2="170" y2="84" marker-end="url(#ah)"></line>
+                <line data-s="1" x1="200" y1="44" x2="276" y2="90" marker-end="url(#ah)"></line>
+                <line data-s="1" x1="84" y1="104" x2="112" y2="104" marker-end="url(#ah)"></line>
+                <line data-s="1" x1="256" y1="104" x2="228" y2="104" marker-end="url(#ah)"></line>
+                <line data-s="2" x1="114" y1="128" x2="86" y2="128" marker-end="url(#ah)" class="dash"></line>
+                <line data-s="2" x1="226" y1="128" x2="254" y2="128" marker-end="url(#ah)" class="dash"></line>
               </g>
-              <text x="99" y="98" class="fl-lbl">deriva</text><text x="241" y="98" class="fl-lbl">deriva</text>
-              <text x="99" y="142" class="fl-lbl">llama</text><text x="241" y="142" class="fl-lbl">llama</text>
-              <g class="fl-box key soft"><rect x="96" y="168" width="148" height="92" rx="6"></rect>
-                <text x="108" y="188" class="fl-left">1. Atención de emergencia</text>
-                <text x="108" y="206" class="fl-left">2. Recojo de evidencia</text>
-                <text x="108" y="224" class="fl-left fl-strong">3. Certificado Único</text>
-                <text x="108" y="242" class="fl-left">4. ILE (SC 0206/2014)</text></g>
-              <g class="fl-ln"><line x1="170" y1="142" x2="170" y2="166" marker-end="url(#ah)"></line>
-                <line x1="170" y1="260" x2="170" y2="286" marker-end="url(#ah)"></line>
-                <line x1="44" y1="136" x2="44" y2="352" marker-end="url(#ah)"></line>
-                <line x1="132" y1="318" x2="62" y2="352" marker-end="url(#ah)"></line>
-                <line x1="84" y1="374" x2="122" y2="374" marker-end="url(#ah)"></line>
-                <line x1="216" y1="374" x2="254" y2="374" marker-end="url(#ah)"></line></g>
-              <text x="176" y="157" class="fl-lbl fl-left">realiza</text>
-              <text x="176" y="277" class="fl-lbl fl-left">cadena de custodia</text>
-              <g class="fl-box"><rect x="128" y="288" width="84" height="32" rx="4"></rect><text x="170" y="308">Evidencias</text></g>
-              <g class="fl-box"><rect x="4" y="354" width="80" height="40" rx="6"></rect><text x="44" y="378">IDIF</text></g>
-              <g class="fl-box"><rect x="124" y="354" width="92" height="40" rx="6"></rect><text x="170" y="378">Fiscalía</text></g>
-              <g class="fl-box"><rect x="256" y="354" width="80" height="40" rx="6"></rect><text x="296" y="371">Tribunal de</text><text x="296" y="386">sentencia</text></g>
+              <text data-s="1" x="99" y="98" class="fl-lbl">deriva</text><text data-s="1" x="241" y="98" class="fl-lbl">deriva</text>
+              <text data-s="2" x="99" y="142" class="fl-lbl">llama</text><text data-s="2" x="241" y="142" class="fl-lbl">llama</text>
+              <g class="fl-box key soft" data-s="3"><rect x="80" y="168" width="180" height="92" rx="6"></rect>
+                <text x="94" y="188" class="fl-left">1. Atención de emergencia</text>
+                <text x="94" y="206" class="fl-left">2. Recojo de evidencia</text>
+                <text x="94" y="224" class="fl-left fl-strong">3. Certificado Único</text>
+                <text x="94" y="242" class="fl-left">4. ILE (SC 0206/2014)</text></g>
+              <g class="fl-ln"><line data-s="3" x1="170" y1="142" x2="170" y2="166" marker-end="url(#ah)"></line>
+                <line data-s="4" x1="170" y1="260" x2="170" y2="286" marker-end="url(#ah)"></line>
+                <line data-s="5" x1="44" y1="136" x2="44" y2="352" marker-end="url(#ah)"></line>
+                <line data-s="5" x1="132" y1="318" x2="62" y2="352" marker-end="url(#ah)"></line>
+                <line data-s="6" x1="84" y1="374" x2="122" y2="374" marker-end="url(#ah)"></line>
+                <line data-s="6" x1="216" y1="374" x2="254" y2="374" marker-end="url(#ah)"></line></g>
+              <text data-s="3" x="176" y="157" class="fl-lbl fl-left">realiza</text>
+              <text data-s="4" x="176" y="277" class="fl-lbl fl-left">cadena de custodia</text>
+              <g class="fl-box" data-s="4 5"><rect x="128" y="288" width="84" height="32" rx="4"></rect><text x="170" y="308">Evidencias</text></g>
+              <g class="fl-box" data-s="5 6"><rect x="4" y="354" width="80" height="40" rx="6"></rect><text x="44" y="378">IDIF</text></g>
+              <g class="fl-box" data-s="6"><rect x="124" y="354" width="92" height="40" rx="6"></rect><text x="170" y="378">Fiscalía</text></g>
+              <g class="fl-box" data-s="6"><rect x="256" y="354" width="80" height="40" rx="6"></rect><text x="296" y="371">Tribunal de</text><text x="296" y="386">sentencia</text></g>
             </svg>
-            <figcaption>Ruta que sigue un caso de violencia sexual desde que la víctima llega al servicio hasta el tribunal. La línea punteada indica que el establecimiento comunica el caso por teléfono. <span class="src">Anexo 5, p. 148</span></figcaption>
+            <div class="steps"><p class="step-t" id="stepT" aria-live="polite">Ruta que sigue un caso de violencia sexual desde que la víctima llega al servicio hasta el tribunal. Pulsa «Ver paso a paso» para recorrerla.</p>
+              <div class="row step-b"><button type="button" class="btn quiet" id="stepPrev" disabled>Anterior</button><span id="stepN"></span><button type="button" class="btn" id="stepNext">Ver paso a paso</button></div></div>
+            <figcaption><span class="src">Anexo 5, p. 148</span></figcaption>
           </figure>
         </div>
       </details>
@@ -629,7 +969,7 @@ header.top nav.tabs a{transition:color .15s,border-color .2s}
 
     <button type="button" class="fab" id="fab" hidden></button>
     <footer>
-      <p>Elaborado por la Dra. Viviana Mamani Huanca. Versión 1.0, octubre de 2026. Material de apoyo basado en el instructivo oficial; no lo reemplaza. Esta página no guarda ni envía ningún dato.</p>
+      <p>Elaborado por la Dra. Viviana Mamani Huanca. Versión 2.0, noviembre de 2026. Material de apoyo basado en el instructivo oficial; no lo reemplaza. Esta página no guarda ni envía ningún dato.</p>
       <details class="fuentes"><summary>Fuente: Ministerio de Salud de Bolivia, 2015</summary><p><i>Modelo de Atención Integral a Víctimas de Violencia Sexual</i>. Serie Documentos Técnico-Normativos N.º 34 (RM N.º 1508). Anexo 1: formato del Certificado Único (pp. 130-133). Anexo 2: instructivo de llenado (pp. 136-144). Anexo 5: ruta crítica (p. 148). Protocolo de atención (pp. 63-66).</p></details>
     </footer>
   </div>
@@ -665,8 +1005,7 @@ const SECS=[
  {t:"Establecimiento y profesional",s:"Encabezado",p:"Form. p. 130 · Instr. p. 136",
   w:["Nombre del establecimiento de salud, nivel (1.º, 2.º o 3.º) y red de salud a la que pertenece.","Ubicación: ciudad o localidad, municipio, provincia y departamento.","Nombres y apellidos completos de quien atiende y su número de matrícula profesional.","Hora, día, mes y año en que se realizó el examen médico."]},
  {t:"Datos de la persona valorada",s:"Encabezado",p:"Form. p. 130 · Instr. p. 136",
-  w:["Nombres y apellidos completos.","Sexo, según documento de identidad, características fisonómicas o lo que refiere la persona.","Edad, estado civil, número de carnet de identidad (si lo tiene), dirección y teléfono."],
-  c:"Si la persona no tiene documento de identidad, anótalo en el mismo espacio del C.I."},
+  w:["Nombres y apellidos completos.","Sexo, según documento de identidad, características fisonómicas o lo que refiere la persona.","Edad, estado civil, número de carnet de identidad (si lo tiene), dirección y teléfono."]},
  {t:"Consentimiento informado",s:"Antes del examen",p:"Form. p. 130 · Instr. p. 137",
   w:["Lee y explica en lenguaje claro y sencillo la importancia del consentimiento y las consecuencias de no realizar los procedimientos para la investigación.","Explica todo lo que se hará: toma de muestras, fotografías, esquemas.","Marca si otorga o no otorga el consentimiento (SÍ / NO).","Si autoriza: C.I., firma y aclaración con nombres y apellidos completos.","Huella dactilar del pulgar derecho en el recuadro del formulario."],
   c:"Si no sabe leer ni escribir: en el espacio de la firma escribe «No sabe leer ni escribir», anota sus nombres y apellidos completos en la aclaración y toma la huella digital de forma obligatoria."},
@@ -701,7 +1040,7 @@ const SECS=[
 ];
 /* Ejemplos de llenado (caso ficticio) */
 const EJ=[
- {r:[["En el establecimiento de salud","Centro de Salud Integral Modelo"],["Nivel","2.º nivel"],["Red de Salud","Red de Salud Norte"],["Ubicado en","zona Villa Ejemplo, calle 3 n.º 120"],["Ciudad/Localidad · Municipio","La Paz · La Paz"],["Provincia · Departamento","Murillo · La Paz"],["El/La proveedor(a)","Juan Carlos Rojas Flores"],["Matrícula Profesional","R-00000"],["Certifica que a horas … del día … del mes … y año …","08:15 · 30 · octubre · 2026"]],
+ {r:[["En el establecimiento de salud","Centro de Salud Integral Modelo"],["Nivel","1.er nivel"],["Red de Salud","Red de Salud Norte"],["Ubicado en","zona Villa Ejemplo, calle 3 n.º 120"],["Ciudad/Localidad · Municipio","La Paz · La Paz"],["Provincia · Departamento","Murillo · La Paz"],["El/La proveedor(a)","Juan Carlos Rojas Flores"],["Matrícula Profesional","R-00000"],["Certifica que a horas … del día … del mes … y año …","08:15 · 30 · octubre · 2026"]],
   m:"«C.S. Modelo, 2do niv., LPZ. Dr. Rojas.»",p:"Usa abreviaturas, el nombre está incompleto y falta la matrícula profesional."},
  {r:[["Nombre","Rosa Elena Condori Quispe"],["Sexo","F"],["Edad","34 años"],["Estado civil","Divorciada"],["C.I.","1234567 LP"],["Dirección","zona Villa Ejemplo, calle 7 n.º 45"],["Tel.","70000000"]],
   m:"«Rosa C., F, 34, s/CI.»",p:"Nombre incompleto y abreviaturas. Si no tiene documento, se escribe «No cuenta con documento de identidad» en el espacio del C.I."},
@@ -709,7 +1048,7 @@ const EJ=[
   m:"Firma en blanco y solo la huella, porque la persona no sabe escribir.",p:"En ese caso se escribe «No sabe leer ni escribir» en el espacio de la firma, el nombre completo en la aclaración y la huella es obligatoria."},
  {r:[["Fecha y hora de la agresión","29 – 10 – 2026 – 22:40"],["Lugar en que ocurrió el hecho","[X] Hogar"],["Agresor bajo influjo de sustancias embriagantes","[X] SÍ"],["Víctima bajo influjo de sustancias","[X] NO"],["Número de personas que le agredieron","1"],["Presunto agresor es conocido","[X] SÍ"],["Vínculo con el agresor","[X] Ex pareja"],["Le agredió físicamente · Forcejeo","[X] SÍ · [X] SÍ"],["Agresor resultó lesionado","[X] NO"],["Violencia a nivel de las vestiduras","[X] SÍ"]],
   m:"«Anoche, en su casa, varios.»",p:"La fecha y la hora van en números, el lugar se marca en la casilla y el número de agresores se anota en numeral."},
- {r:[["Breve relato del hecho","Refiere (sic): «Anoche, como a las once menos veinte, mi ex esposo llegó a mi casa, me empezó a gritar, me agarró fuerte del brazo derecho y me apretó el cuello con su mano. Yo lo empujé y me rompió la blusa.»"]],
+ {r:[["Breve relato del hecho","Refiere (sic): «Anoche, como a las once menos veinte, mi ex esposo llegó borracho a mi casa, me empezó a gritar, me agarró fuerte del brazo derecho y me apretó el cuello con su mano. Yo lo empujé y me rompió la blusa.»"]],
   m:"«Paciente refiere agresión física por su pareja.»",p:"Interpreta en lugar de transcribir, no dice cómo ocurrió y cambia el vínculo (era ex pareja)."},
  {r:[["Silueta","Mujer, plano anterior"],["Cuello, cara anterolateral izquierda","Se anota el n.º 1 (excoriación)"],["Brazo derecho, cara anterior","Se anota el n.º 2 (equimosis)"]],
   m:"Lesiones descritas por escrito, pero el diagrama queda sin números.",p:"El diagrama y la descripción escrita se completan siempre los dos y deben coincidir."},
@@ -721,11 +1060,11 @@ const EJ=[
   m:"«Ano sin particularidades.»",p:"Hay que describir la forma, el tono del esfínter y los pliegues aunque no haya lesiones."},
  {s:1,r:[["Toma de muestras (hasta 72 h)","(X) Sangre para genética · (X) Hisopado del canal vaginal · (X) Hisopados fondo de saco, más frotis en portaobjeto · (X) Extremos distales de las uñas"],["Profilaxis (antes de las 72 h)","(X) ITS · (X) VIH · (X) Anticoncepción de emergencia · (X) Prueba de embarazo · (X) Contención emocional"],["Funcionario que recepciona","Nombre completo del funcionario policial · C.I. · Telf. · Firma"],["Fecha de recepción","30/10/2026, 10:30"]],
   m:"Muestras marcadas, sin registrar quién las recibió.",p:"Sin el nombre, C.I., teléfono, firma y fecha de quien recibe, se rompe la cadena de custodia."},
- {r:[["a.","Hemograma completo del 30/10/2026 (fotocopia adjunta)"],["b.","Radiografía de brazo derecho con informe del 30/10/2026 (fotocopia adjunta)"]],
-  m:"«Laboratorios normales.»",p:"Se adjunta la fotocopia de cada documento y se enumera; una opinión no reemplaza al informe."},
+ {r:[["a.","Fotografías de las lesiones de cuello y brazo derecho, tomadas el 30/10/2026 con consentimiento (4 copias adjuntas)"],["b.",""]],
+  m:"«Se adjuntan fotos.»",p:"No dice cuántas ni de qué. Cada documento adjunto se enumera y se describe; si no hay más, la línea siguiente queda en blanco."},
  {r:[["1.","Excoriaciones en cara anterolateral izquierda del cuello."],["2.","Equimosis en cara anterior del brazo derecho."]],
   m:"«Agresión física.» o «Violación.»",p:"Eso es el hecho o una calificación jurídica, no un diagnóstico médico. Anota los diagnósticos según la nomenclatura que reconoce el IDIF."},
- {r:[["Firma","[firma]"],["Aclaración de firma","Juan Carlos Rojas Flores"],["Sello del proveedor","[sello]"],["C.I. · Teléfono","7654321 LP · 70000001 / establecimiento 2200000"],["Cargo que ocupa","Médico de guardia, Servicio de Emergencias"],["Fecha","30/10/2026"],["Sello de la institución","[sello]"]],
+ {r:[["Firma","[firma]"],["Aclaración de firma","Juan Carlos Rojas Flores"],["Sello del proveedor","[sello]"],["C.I. · Teléfono","7654321 LP · 70000001 / establecimiento 2200000"],["Cargo que ocupa","Médico general de turno"],["Fecha","30/10/2026"],["Sello de la institución","[sello]"]],
   m:"Solo rúbrica y sello, sin aclaración ni datos de contacto.",p:"El médico forense que homologa el certificado debe poder identificarte y ubicarte."}
 ];
 function ejemploHTML(i){
@@ -733,6 +1072,52 @@ function ejemploHTML(i){
   return `<h4>Ejemplo de llenado</h4><div class="ej"><span class="ej-tag">Ejemplo ilustrativo (caso ficticio${e.s?" de violencia sexual":""})</span><dl>${e.r.map(([k,v])=>`<div><dt>${k}</dt><dd>${v}</dd></div>`).join("")}</dl></div>
   <div class="mal"><span class="ej-tag">Evita</span><p class="mal-t">${e.m}</p><p>${e.p}</p></div>`;
 }
+/* Ilustraciones de trazo fino por sección (se dibujan al abrir la guía) */
+const fig=(svg,cap,alt)=>`<figure class="ill"><svg viewBox="0 0 300 ${svg[0]}" role="img" aria-label="${alt}">${svg[1]}</svg><figcaption>${cap}</figcaption></figure>`;
+const ILL={
+ 2:()=>fig([118,`
+  <rect class="thin" x="14" y="8" width="88" height="100" rx="2"></rect>
+  ${[6,11,16,21,26].map((r,i)=>`<ellipse class="ln" cx="58" cy="52" rx="${r}" ry="${r*1.42}" stroke-width="1" stroke-dasharray="${i%2?'18 3':'26 4'}"></ellipse>`).join("")}
+  <text class="c" x="58" y="102">Pulgar derecho</text>
+  <text x="132" y="30">C.I.</text><line class="dot" x1="152" y1="30" x2="286" y2="30"></line>
+  <path class="acc" d="M136,66 c8,-22 16,6 24,-6 s10,-16 18,-2 s12,8 20,-6 s12,-6 18,4 s14,-2 22,-8"></path>
+  <line class="thin" x1="132" y1="74" x2="286" y2="74"></line>
+  <text x="132" y="88">Firma</text>
+  <text x="132" y="106" class="b">Aclaración: nombre completo</text>`],
+  "La huella del pulgar derecho va en el recuadro marcado del formulario, junto a la firma y su aclaración.","Recuadro con huella dactilar y línea de firma con aclaración"),
+ 5:()=>{const g=["cabeza","cuello","torax","abdomen","pelvis","brazo","antebrazo","mano","muslo","pierna","pie"].map(k=>{const d=P[k];const both=k==="cabeza"||k==="cuello"?[d]:[d,mirror(d)];return both.map(x=>`<path class="thin" d="${x}" fill="var(--paper)"></path>`).join("")}).join("");
+  return fig([140,`<g transform="translate(24 4) scale(.52)">${g}</g>
+  <line class="acc" x1="60" y1="26" x2="138" y2="40" stroke-width="1"></line><circle class="mk" cx="59" cy="25" r="7"></circle><text class="n" x="59" y="28.5">1</text>
+  <line class="acc" x1="38" y1="48" x2="138" y2="84" stroke-width="1"></line><circle class="mk" cx="37" cy="48" r="7"></circle><text class="n" x="37" y="51.5">2</text>
+  <text x="142" y="38" class="b">1  Excoriación</text><text x="142" y="52">cuello, lado izquierdo</text>
+  <text x="142" y="82" class="b">2  Equimosis</text><text x="142" y="96">brazo derecho, cara anterior</text>
+  <text x="2" y="64">Der.</text><text x="92" y="64">Izq.</text>`],
+  "Así se ven en la silueta los números del caso de ejemplo.","Silueta con los números 1 en el cuello y 2 en el brazo derecho")},
+ 7:()=>fig([132,`
+  <ellipse class="ln" cx="70" cy="66" rx="34" ry="50"></ellipse><ellipse class="ln" cx="70" cy="66" rx="15" ry="28"></ellipse>
+  <text class="c" x="70" y="11">12</text><text class="c" x="114" y="70">3</text><text class="c" x="70" y="129">6</text><text class="c" x="26" y="70">9</text>
+  <line class="red" x1="77.5" y1="90.2" x2="87" y2="109.3"></line>
+  <line class="blue" x1="55" y1="66" x2="36" y2="66"></line>
+  <line class="red" x1="150" y1="46" x2="172" y2="46"></line><text x="180" y="50" class="b">Reciente: en rojo</text><text x="180" y="64">desgarro a las 5</text>
+  <line class="blue" x1="150" y1="88" x2="172" y2="88"></line><text x="180" y="92" class="b">Antiguo: en azul</text><text x="180" y="106">desgarro a las 9</text>`],
+  "Ubica cada desgarro según la esfera del reloj y remárcalo con el color que corresponde.","Esfera horaria con un desgarro reciente en rojo a las 5 y uno antiguo en azul a las 9"),
+ 9:()=>fig([122,`
+  <path class="ln" d="M18,44 L40,26 L132,26 L110,44 Z"></path><rect class="ln" x="18" y="44" width="92" height="62"></rect><path class="ln" d="M110,44 L132,26 L132,88 L110,106"></path>
+  <rect class="acc" x="32" y="62" width="64" height="24" rx="2"></rect><text class="c" x="64" y="78">Rotulado</text>
+  <line class="acc" x1="142" y1="66" x2="180" y2="66"></line><path d="M180,66 l-8,-5 v10 Z" fill="var(--accent)"></path>
+  <rect class="ln" x="190" y="18" width="98" height="98" rx="3"></rect><rect class="ln" x="224" y="12" width="30" height="10" rx="2"></rect>
+  ${["Nombre","C.I.","Teléfono","Firma","Fecha"].map((t,i)=>`<text x="198" y="${40+i*17}">${t}</text><line class="dot" x1="${t.length*5.6+202}" y1="${40+i*17}" x2="280" y2="${40+i*17}"></line>`).join("")}`],
+  "La caja rotulada y la planilla de quien recibe forman la cadena de custodia.","Caja de evidencias rotulada y una planilla con nombre, C.I., teléfono, firma y fecha de quien recibe"),
+ 12:()=>fig([112,`
+  <path class="acc" d="M22,52 c10,-26 18,8 28,-8 s12,-14 20,0 s12,8 22,-8 s14,-4 22,6 s16,-2 26,-10"></path>
+  <line class="thin" x1="18" y1="62" x2="158" y2="62"></line>
+  <text x="18" y="78">Firma</text><text x="18" y="96" class="b">Aclaración, C.I., celular y cargo</text>
+  <circle class="ln" cx="198" cy="54" r="30"></circle><circle class="thin" cx="198" cy="54" r="24"></circle>
+  <text class="c" x="198" y="51">Sello</text><text class="c" x="198" y="64">personal</text>
+  <rect class="thin" x="240" y="24" width="52" height="60" rx="2"></rect>
+  <text class="c" x="266" y="51">Sello</text><text class="c" x="266" y="64">instituc.</text>`],
+  "Firma, aclaración, sello personal y sello institucional: lo que identifica a quien certifica.","Firma con aclaración, sello del profesional y sello de la institución")
+};
 const CORTO=["Establecimiento","Persona valorada","Consentimiento","Anamnesis","Relato del hecho","Diagramas","Descripción escrita","Ginecológico","Región anal","Muestras","Complementarios","Diagnóstico","Firma y entrega"];
 const MAPA=[{p:130,b:[[0,1],[1,1],[2,1.7],[3,2.2],[4,1.1]]},{p:131,b:[[5,4.2],[6,1.3]]},{p:132,b:[[6,1],[7,2.6],[8,2.6],[9,0]]},{p:133,b:[[9,2.8],[10,.9],[11,.9],[12,1.3]]}];
 const vistos=new Set();
@@ -757,6 +1142,7 @@ function renderGuia(){
     let h=`<summary><span class="num">${String(i+1).padStart(2,"0")}</span><span class="st">${s.t}<small>${na?"Solo en casos de violencia sexual":s.s}</small></span>${s.x?'<span class="tag">Sexual</span>':'<span class="chev">›</span>'}</summary><div class="body">`;
     h+=`<h4>Qué anotar</h4><ul>${s.w.map(x=>`<li>${x}</li>`).join("")}</ul>`;
     h+=ejemploHTML(i);
+    if(ILL[i])h+=ILL[i]();
     if(s.extra)h+=s.extra;
     if(s.codes)h+=`<h4>Lista de lesiones del diagrama</h4><ul class="codes">${TIPOS.map((t,i)=>`<li><b>${i+1}</b>${t[0]}</li>`).join("")}</ul>`;
     if(s.ink)h+=`<div class="callout">Remarca con <span class="ink-b">bolígrafo azul</span> los desgarros, fisuras o cicatrices antiguas y con <span class="ink-r">bolígrafo rojo</span> los recientes.</div>`;
@@ -764,6 +1150,58 @@ function renderGuia(){
     h+=`<span class="src">${s.p.replace(/Form\./g,"Formulario").replace(/Instr\./g,"instructivo").replace(/Protocolo/g,"protocolo").replace(/ · /g,"; ")}</span></div>`;
     d.innerHTML=h;box.appendChild(d);
   });
+  buscar();
+}
+
+/* ---------- Buscador de la guía ---------- */
+const sinTilde=t=>t.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
+const VAR={a:"[aáàä]",e:"[eéèë]",i:"[iíìï]",o:"[oóòö]",u:"[uúùü]",n:"[nñ]"};
+function patron(q){return new RegExp([...sinTilde(q)].map(c=>VAR[c]||c.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).join(""),"gi")}
+function quitarMarcas(root){root.querySelectorAll("mark.hl").forEach(m=>{m.replaceWith(document.createTextNode(m.textContent))});root.normalize()}
+function marcar(root,re){
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement.closest("svg,script,style")?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});
+  const ns=[];while(w.nextNode())ns.push(w.currentNode);
+  ns.forEach(n=>{re.lastIndex=0;if(!re.test(n.data))return;re.lastIndex=0;const f=document.createDocumentFragment();let last=0,m;
+    while((m=re.exec(n.data))){f.append(n.data.slice(last,m.index));const k=document.createElement("mark");k.className="hl";k.textContent=m[0];f.append(k);last=m.index+m[0].length}
+    f.append(n.data.slice(last));n.replaceWith(f)});
+}
+function buscar(){
+  const box=$("#secs"),q=($("#q")&&$("#q").value||"").trim();quitarMarcas(box);
+  const secs=[...box.querySelectorAll("details.sec")];
+  if(q.length<2){secs.forEach(d=>d.hidden=false);$("#qCount").textContent="";$("#qNone").hidden=true;return}
+  const re=patron(q);let n=0;
+  secs.forEach(d=>{re.lastIndex=0;const ok=re.test(d.textContent);d.hidden=!ok;if(ok){n++;d.open=true;marcar(d,re)}});
+  $("#qCount").textContent=n?`${n} ${n===1?"sección":"secciones"}`:"";$("#qNone").hidden=n>0;
+}
+$("#q").addEventListener("input",buscar);
+
+/* ---------- Certificado completo de ejemplo ---------- */
+function hojaHTML(){
+  const F=(k,v)=>`<div class="cf${v?"":" blank"}"><span class="cl">${k}</span><span class="cv">${v||""}</span></div>`;
+  const rows=i=>EJ[i].r.map(([k,v])=>F(k,v)).join("");
+  const sec=(t,c)=>`<section class="cs"><h5>${t}</h5>${c}</section>`;
+  const desc=Object.fromEntries(EJ[6].r);
+  const vacio=t=>`<div class="cblank">${t}</div>`;
+  const sil=["cabeza","cuello","torax","abdomen","pelvis","brazo","antebrazo","mano","muslo","pierna","pie"].map(k=>{const d=P[k];return (k==="cabeza"||k==="cuello"?[d]:[d,mirror(d)]).map(x=>`<path d="${x}"></path>`).join("")}).join("");
+  const fig=`<svg class="csil" viewBox="0 0 120 262" role="img" aria-label="Silueta con el número 1 en el cuello y el 2 en el brazo derecho"><g>${sil}</g><circle cx="66" cy="42" r="7"></circle><text x="66" y="45.5">1</text><circle cx="24" cy="80" r="7"></circle><text x="24" y="83.5">2</text></svg>`;
+  const pag=(n,c)=>`<article class="cpage"><span class="wm" aria-hidden="true">EJEMPLO FICTICIO</span><span class="cpg">p. ${n}</span>${c}</article>`;
+  return `<p class="note">Así queda el certificado del caso ficticio de la guía. Los apartados que no corresponden a un caso de violencia física se dejan en blanco, como indica el instructivo (p. 144). Todos los datos son inventados.</p>
+  <div class="cnav"><button type="button" class="cbtn" data-c="-1" aria-label="Hoja anterior">‹</button><span id="cpos">Hoja 1 de 4</span><button type="button" class="cbtn" data-c="1" aria-label="Hoja siguiente">›</button></div>
+  <div class="cpages" id="cpages">
+  ${pag(130,`<h4 class="ctitle">Certificado Único para casos de violencia en el marco de la Ley 348</h4>${sec("Establecimiento y profesional",rows(0))}${sec("Persona valorada",rows(1))}${sec("Consentimiento informado",rows(2))}${sec("Anamnesis",rows(3))}${sec("Breve relato del hecho",rows(4))}`)}
+  ${pag(131,`${sec("Examen físico. Diagrama",`<div class="cdiag">${fig}<div class="cleg"><b>Tipo de lesión encontrada</b><br>1. Excoriación<br>2. Equimosis</div></div>`)}${sec("Descripción escrita (debe coincidir con el diagrama)",["Cráneo","Rostro"].map(k=>F(k,"")).join("")+F("Cuello",desc["Cuello"])+["Tórax anterior","Tórax posterior"].map(k=>F(k,"")).join(""))}`)}
+  ${pag(132,`${sec("Descripción escrita (continuación)",["Abdomen","Región lumbar","Pelvis"].map(k=>F(k,"")).join("")+F("Extremidades superiores",desc["Extremidades superiores"])+F("Extremidades inferiores",""))}${sec("Examen ginecológico. Diagrama",vacio("En blanco: no corresponde en este caso"))}${sec("Examen de la región del ano",vacio("En blanco: no corresponde en este caso"))}${sec("En casos de violencia sexual realizar el examen en:",["Genitales externos","Himen","Examen anal"].map(k=>F(k,"")).join(""))}`)}
+  ${pag(133,`${sec("Muestras y evidencias colectadas en delitos sexuales",vacio("En blanco: no corresponde en este caso"))}${sec("Exámenes complementarios y documentos adjuntos",rows(10))}${sec("Impresión diagnóstica",rows(11))}${sec("Firma",rows(12))}`)}
+  </div>`;
+}
+$("#hoja").addEventListener("toggle",()=>{const b=$("#hojaBody");if($("#hoja").open&&!b.dataset.ok){b.innerHTML=hojaHTML();b.dataset.ok="1";hojasNav()}});
+function hojasNav(){
+  const cont=$("#cpages"),pages=[...cont.children],pos=$("#cpos");
+  const actual=()=>{const c=cont.scrollLeft+cont.clientWidth/2;let best=0,dist=1e9;pages.forEach((p,i)=>{const m=p.offsetLeft+p.offsetWidth/2,d=Math.abs(m-c);if(d<dist){dist=d;best=i}});return best};
+  const pintarPos=()=>{const i=actual();pos.textContent=`Hoja ${i+1} de ${pages.length} (p. ${130+i})`;pages.forEach((p,k)=>p.classList.toggle("activa",k===i))};
+  let t;cont.addEventListener("scroll",()=>{clearTimeout(t);t=setTimeout(pintarPos,60)},{passive:true});
+  $("#hojaBody").querySelectorAll(".cbtn").forEach(b=>b.addEventListener("click",()=>{const i=Math.max(0,Math.min(pages.length-1,actual()+ +b.dataset.c));cont.scrollTo({left:pages[i].offsetLeft-(cont.clientWidth-pages[i].offsetWidth)/2,behavior:"smooth"})}));
+  pintarPos();
 }
 
 /* ---------- Silueta ---------- */
@@ -792,20 +1230,20 @@ const P={
 };
 function zonas(fig){
   const z=[];const c=CARA[fig];
-  if(fig==="A"){z.push({d:P.craneo,reg:0,loc:()=>""});z.push({d:P.rostro,reg:1,loc:()=>""})}
-  else z.push({d:P.cabeza,reg:0,loc:()=>"región occipital"});
+  if(fig==="A"){z.push({d:P.craneo,reg:0,loc:()=>"región frontal",ph:"Precisa la región y el lado, por ejemplo: región parietal derecha"});z.push({d:P.rostro,reg:1,loc:()=>"",ph:"Escribe la región del rostro y el lado, por ejemplo: región malar derecha"})}
+  else z.push({d:P.cabeza,reg:0,loc:()=>"región occipital",ph:"Precisa la región y el lado, por ejemplo: región occipital izquierda"});
   z.push({d:P.cuello,reg:2,loc:()=>`cara ${c} del cuello`});
   ["L","R"].forEach(m=>{
     const t=d=>m==="L"?d:mirror(d);
-    z.push({d:t(P.torax),reg:fig==="A"?3:4,loc:()=>`cara ${c} del hemitórax ${ladoDe(fig,m)}`});
-    z.push({d:t(P.abdomen),reg:fig==="A"?5:6,loc:()=>fig==="A"?`hemiabdomen ${ladoDe(fig,m)}`:`región lumbar ${ladoDe(fig,m,"f")}`});
-    z.push({d:t(P.pelvis),reg:7,loc:()=>fig==="A"?`región inguinal ${ladoDe(fig,m,"f")}`:`región glútea ${ladoDe(fig,m,"f")}`});
-    z.push({d:t(P.brazo),reg:8,loc:()=>`cara ${c} del brazo ${ladoDe(fig,m)}`});
-    z.push({d:t(P.antebrazo),reg:8,loc:()=>`cara ${c} del antebrazo ${ladoDe(fig,m)}`});
-    z.push({d:t(P.mano),reg:8,loc:()=>fig==="A"?`palma de la mano ${ladoDe(fig,m,"f")}`:`dorso de la mano ${ladoDe(fig,m,"f")}`});
-    z.push({d:t(P.muslo),reg:9,loc:()=>`cara ${c} del muslo ${ladoDe(fig,m)}`});
-    z.push({d:t(P.pierna),reg:9,loc:()=>`cara ${c} de la pierna ${ladoDe(fig,m,"f")}`});
-    z.push({d:t(P.pie),reg:9,loc:()=>fig==="A"?`dorso del pie ${ladoDe(fig,m)}`:`talón ${ladoDe(fig,m)}`});
+    z.push({d:t(P.torax),reg:fig==="A"?3:4,loc:()=>`cara ${c} del hemitórax ${ladoDe(fig,m)}`,amb:`cara ${c} de ambos hemitórax`});
+    z.push({d:t(P.abdomen),reg:fig==="A"?5:6,loc:()=>fig==="A"?`hemiabdomen ${ladoDe(fig,m)}`:`región lumbar ${ladoDe(fig,m,"f")}`,amb:fig==="A"?"ambos hemiabdómenes":"ambas regiones lumbares"});
+    z.push({d:t(P.pelvis),reg:7,loc:()=>fig==="A"?`región inguinal ${ladoDe(fig,m,"f")}`:`región glútea ${ladoDe(fig,m,"f")}`,amb:fig==="A"?"ambas regiones inguinales":"ambas regiones glúteas"});
+    z.push({d:t(P.brazo),reg:8,loc:()=>`cara ${c} del brazo ${ladoDe(fig,m)}`,amb:`cara ${c} de ambos brazos`});
+    z.push({d:t(P.antebrazo),reg:8,loc:()=>`cara ${c} del antebrazo ${ladoDe(fig,m)}`,amb:`cara ${c} de ambos antebrazos`});
+    z.push({d:t(P.mano),reg:8,loc:()=>fig==="A"?`palma de la mano ${ladoDe(fig,m,"f")}`:`dorso de la mano ${ladoDe(fig,m,"f")}`,amb:fig==="A"?"palma de ambas manos":"dorso de ambas manos"});
+    z.push({d:t(P.muslo),reg:9,loc:()=>`cara ${c} del muslo ${ladoDe(fig,m)}`,amb:`cara ${c} de ambos muslos`});
+    z.push({d:t(P.pierna),reg:9,loc:()=>`cara ${c} de la pierna ${ladoDe(fig,m,"f")}`,amb:`cara ${c} de ambas piernas`});
+    z.push({d:t(P.pie),reg:9,loc:()=>fig==="A"?`dorso del pie ${ladoDe(fig,m)}`:`talón ${ladoDe(fig,m)}`,amb:fig==="A"?"dorso de ambos pies":"ambos talones"});
   });
   return z;
 }
@@ -826,13 +1264,24 @@ function renderFigs(){
   });
   $("#figs").innerHTML=h;
 }
+let zonasSel=[];
+/* Une las ubicaciones de varias zonas: dos lados de la misma parte se escriben «ambos/ambas» */
+function unirZonas(ids){
+  const zs=ids.map(i=>ZMAP[i]);
+  if(zs.length===2&&zs[0].amb&&zs[0].amb===zs[1].amb)return zs[0].amb;
+  const ls=zs.map(z=>z.loc()).filter(Boolean);
+  return ls.length<2?(ls[0]||""):ls.slice(0,-1).join(", ")+" y "+ls[ls.length-1];
+}
+function limpiarZonas(){zonasSel=[];document.querySelectorAll(".zone.on").forEach(r=>r.classList.remove("on"));$("#zoneChip").textContent="Toca una o más zonas de la silueta"}
 function elegirZona(id){
   const z=ZMAP[id];if(!z)return;
-  document.querySelectorAll(".zone").forEach(r=>r.classList.toggle("on",r.dataset.z===id));
-  $("#fReg").value=String(z.reg);
-  const loc=z.loc();$("#fLoc").value=loc;
-  $("#zoneChip").textContent=REGIONES[z.reg]+(loc?": "+loc:"");
-  actualizar();$("#fLoc").focus({preventScroll:true});
+  zonasSel=zonasSel.includes(id)?zonasSel.filter(x=>x!==id):[...zonasSel,id];
+  document.querySelectorAll(".zone").forEach(r=>r.classList.toggle("on",zonasSel.includes(r.dataset.z)));
+  if(!zonasSel.length){limpiarZonas();$("#fLoc").value="";actualizar();return}
+  const z0=ZMAP[zonasSel[0]];$("#fReg").value=String(z0.reg);
+  const loc=unirZonas(zonasSel);$("#fLoc").value=loc;$("#fLoc").placeholder=(zonasSel.length===1&&z0.ph)||"Ej.: cara anterior del tercio medio del brazo derecho";
+  $("#zoneChip").textContent=(zonasSel.length>1?`${zonasSel.length} zonas: `:REGIONES[z0.reg]+": ")+(loc||"precisa la ubicación");
+  actualizar();
 }
 $("#figs").addEventListener("click",e=>{const r=e.target.closest(".zone");if(r)elegirZona(r.dataset.z)});
 $("#figs").addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.classList.contains("zone")){e.preventDefault();elegirZona(e.target.dataset.z)}});
@@ -848,6 +1297,7 @@ function leer(){
   const ti=+$("#fTipo").value, n=Math.max(1,parseInt($("#fCant").value)||1);
   return {reg:+$("#fReg").value,ti,n,forma:FORMAS[+$("#fForma").value],dir:DIRS[+$("#fDir").value],
     loc:$("#fLoc").value.trim(),L:$("#fL").value.trim(),A:$("#fA").value.trim(),
+    med:n>1?$("#fMed").value.split(";").map(x=>x.trim().replace(/\s*cm$/i,"").replace(/\s*[xX*]\s*/g," × ").replace(/\./g,",")).filter(Boolean):[],
     color:COLOR_OK.includes(ti)?COLORES[+$("#fColor").value]:"",
     bordes:HERIDAS.includes(ti)?BORDES[+$("#fBordes").value]:"",
     inst:INST[+$("#fInst").value],otras:$("#fOtras").value.trim()};
@@ -859,7 +1309,9 @@ function frase(o){
   let p=`${cant} (n.º ${o.ti+1} del diagrama)`+(o.loc?` en ${o.loc}`:" en [ubicación]");
   const c=[];
   if(o.forma)c.push(`de forma ${o.forma}`);
-  if(o.L||o.A){const dm=o.L&&o.A?`${o.L} × ${o.A} cm`:`${o.L||o.A} cm`;c.push(`de ${dm}${o.n>1?" la de mayor tamaño":""}`)}
+  const cm=v=>String(v).replace(".",",");
+  if(o.med.length>1){const ms=o.med.map(x=>x+" cm");c.push("que miden "+ms.slice(0,-1).join(", ")+" y "+ms[ms.length-1]+(o.med.length===o.n?" respectivamente":""))}
+  else if(o.L||o.A){const dm=o.L&&o.A?`${cm(o.L)} × ${cm(o.A)} cm`:`${cm(o.L||o.A)} cm`;c.push(`de ${dm}${o.n>1?" la de mayor tamaño":""}`)}
   if(o.dir)c.push(`de dirección ${o.dir}`);
   if(o.color)c.push(`de coloración ${o.color}`);
   if(o.bordes)c.push(`de bordes ${o.bordes}`);
@@ -873,7 +1325,9 @@ function avisos(o){
   const w=[];
   if(!o.loc)w.push("Falta la ubicación anatómica.");
   else if(o.reg>1&&!/derech|izquierd|bilateral|ambos|ambas|media/i.test(o.loc))w.push("Indica el lado (derecho, izquierdo, línea media o bilateral).");
-  if(!o.L&&!o.A)w.push("Faltan las dimensiones en centímetros.");
+  if(!o.L&&!o.A&&o.med.length<2)w.push("Faltan las dimensiones en centímetros.");
+  if(o.med.length>1&&o.med.length!==o.n)w.push(`Anotaste ${o.med.length} medidas para ${o.n} lesiones.`);
+  if(zonasSel.length>1&&new Set(zonasSel.map(i=>ZMAP[i].reg)).size>1)w.push("Las zonas elegidas son de regiones distintas del formulario; conviene agregarlas por separado.");
   if(!o.inst)w.push("No se indicó el posible instrumento.");
   return w;
 }
@@ -881,6 +1335,7 @@ function actualizar(){
   const ti=+$("#fTipo").value;
   $("#wColor").hidden=!COLOR_OK.includes(ti);
   $("#wBordes").hidden=!HERIDAS.includes(ti);
+  const nn=Math.max(1,parseInt($("#fCant").value)||1);$("#wMed").hidden=nn<2;$("#lblDims").textContent=nn>1?"Dimensiones de la mayor (cm)":"Dimensiones (cm)";
   const o=leer();$("#prev").textContent=frase(o);
   $("#warns").innerHTML=avisos(o).map(x=>`<li>${x}</li>`).join("");
   $("#addBtn").disabled=!o.loc;
@@ -888,9 +1343,24 @@ function actualizar(){
 $("#lesForm").addEventListener("input",actualizar);
 $("#lesForm").addEventListener("change",actualizar);
 
-let lista=[{reg:8,txt:"Dos excoriaciones (n.º 1 del diagrama) en cara anterior del tercio medio de ambos brazos, de forma lineal, de 3 × 0,2 cm la de mayor tamaño. Posible instrumento: uñas.",ej:true},
-           {reg:8,txt:"Una equimosis (n.º 2 del diagrama) en cara anterior del tercio medio del brazo derecho, de forma ovalada, de 2 × 1,5 cm, de coloración violácea. Posible instrumento: manos.",ej:true}];
-function agregar(reg,txt){lista=lista.filter(x=>!x.ej);lista.push({reg,txt});pintar();msg("Lesión agregada.");fab()}
+let lista=[{reg:8,txt:"Dos excoriaciones (n.º 1 del diagrama) en cara anterior del tercio medio de ambos brazos, de forma lineal, de 3 × 0,2 cm la de mayor tamaño. Posible instrumento: uñas.",ej:true,z:["A6","A15"],n:1},
+           {reg:8,txt:"Una equimosis (n.º 2 del diagrama) en cara anterior del tercio medio del brazo derecho, de forma ovalada, de 2 × 1,5 cm, de coloración violácea. Posible instrumento: manos.",ej:true,z:["A6"],n:2}];
+function agregar(reg,txt,z,n){lista=lista.filter(x=>!x.ej);lista.push({reg,txt,z:z||[],n:n||0,nuevo:true});pintar();msg("Lesión agregada.");fab()}
+/* Marcas numeradas sobre la silueta: el diagrama refleja la descripción escrita */
+function caja(d){const xs=[],ys=[];d.replace(/(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/g,(_,x,y)=>{xs.push(+x);ys.push(+y)});return {x:(Math.min(...xs)+Math.max(...xs))/2,y:(Math.min(...ys)+Math.max(...ys))/2}}
+function marcas(){
+  document.querySelectorAll("#figs g.marks").forEach(g=>g.remove());
+  const cuenta={};
+  lista.filter(it=>!it.ej).forEach(it=>(it.z||[]).forEach(zid=>{
+    const z=ZMAP[zid],path=document.querySelector(`.zone[data-z="${zid}"]`);if(!z||!path)return;
+    const svg=path.ownerSVGElement;let g=svg.querySelector("g.marks");
+    if(!g){g=document.createElementNS("http://www.w3.org/2000/svg","g");g.setAttribute("class","marks");svg.appendChild(g)}
+    const k=cuenta[zid]=(cuenta[zid]||0)+1,c=caja(z.d),dx=(k-1)%2?6:(k>1?-6:0),dy=(k-1)*6;
+    g.insertAdjacentHTML("beforeend",`<g transform="translate(${(c.x+dx).toFixed(1)} ${(c.y+dy).toFixed(1)})"><g class="mark${it.nuevo?" nuevo":""}${it.ej?" ej":""}"><circle r="6.4"></circle><text y="3">${it.n}</text></g></g>`);
+  }));
+  lista.forEach(it=>delete it.nuevo);
+  $("#figNote").hidden=!lista.some(it=>!it.ej&&(it.z||[]).length);
+}
 function fab(){
   const n=lista.filter(x=>!x.ej).length, el=$("#fab");
   el.hidden=!(n&&document.body.dataset.v==="lesiones");
@@ -902,7 +1372,7 @@ document.getElementById("figTog").addEventListener("click",e=>{const b=e.target.
 (()=>{const hd=document.querySelector("header.top");let t=false;addEventListener("scroll",()=>{if(t)return;t=true;requestAnimationFrame(()=>{hd.classList.toggle("compact",scrollY>40);t=false})},{passive:true})})();
 function pintar(){
   const out=$("#out");
-  if(!lista.length){out.innerHTML='<p class="empty">Aún no agregaste lesiones. Completa el formulario de arriba y pulsa «Agregar a la descripción».</p>';return}
+  if(!lista.length){out.innerHTML='<p class="empty">Aún no agregaste lesiones. Completa el formulario de arriba y pulsa «Agregar a la descripción».</p>';marcas();return}
   let h="";
   REGIONES.forEach((r,ri)=>{
     const its=lista.map((x,i)=>({...x,i})).filter(x=>x.reg===ri);
@@ -910,16 +1380,17 @@ function pintar(){
     h+=`<div class="reg"><b>${r}</b>${its.map(x=>`<div class="item"><span>${x.ej?'<span class="ex">Ejemplo</span>':''}${esc(x.txt)}</span><button type="button" data-del="${x.i}">Quitar</button></div>`).join("")}</div>`;
   });
   out.innerHTML=h;
+  marcas();
 }
 $("#out").addEventListener("click",e=>{const b=e.target.closest("[data-del]");if(!b)return;lista.splice(+b.dataset.del,1);pintar();fab()});
 $("#lesForm").addEventListener("submit",e=>{
   e.preventDefault();const o=leer();if(!o.loc)return;
-  agregar(o.reg,frase(o));
-  ["#fLoc","#fL","#fA","#fOtras"].forEach(s=>$(s).value="");$("#fCant").value="1";
-  document.querySelectorAll(".zone.on").forEach(r=>r.classList.remove("on"));$("#zoneChip").textContent="Toca una zona de la silueta";
+  agregar(o.reg,frase(o),[...zonasSel],o.ti+1);
+  ["#fLoc","#fL","#fA","#fOtras","#fMed"].forEach(s=>$(s).value="");$("#fCant").value="1";
+  limpiarZonas();
   actualizar();
 });
-$("#clrForm").addEventListener("click",()=>{$("#lesForm").reset();$("#fTipo").value="1";document.querySelectorAll(".zone.on").forEach(r=>r.classList.remove("on"));$("#zoneChip").textContent="Toca una zona de la silueta";actualizar()});
+$("#clrForm").addEventListener("click",()=>{$("#lesForm").reset();$("#fTipo").value="1";limpiarZonas();actualizar()});
 $("#clrAll").addEventListener("click",()=>{lista=[];pintar();msg("");fab()});
 function texto(){return REGIONES.map((r,ri)=>{const its=lista.filter(x=>x.reg===ri);return its.length?`${r}: ${its.map(x=>x.txt).join(" ")}`:null}).filter(Boolean).join("\n")}
 function msg(t){$("#toast").textContent=t}
@@ -969,7 +1440,7 @@ function gFrase(o){
     p+=o.sin?", sin desgarros":`, con desgarro ${o.ext}, ${o.data}`+(o.h?`, ${o.h}`:", [ubicación horaria]");
   } else {
     const donde=o.z==="anal"?"en región anal":"en genitales externos";
-    p=`${o.hall}${o.hall==="Desgarro"?" "+o.ext:""} ${data} ${donde}`+(o.h?`, ${o.h}`:", [ubicación horaria]");
+    p=`${o.hall}${o.hall==="Desgarro"?" "+o.ext:""}${o.hall==="Cicatriz"?"":" "+data} ${donde}`+(o.h?`, ${o.h}`:", [ubicación horaria]");
   }
   if(o.otras)p+=`, ${o.otras}`;
   return p+".";
@@ -979,7 +1450,8 @@ function gActualizar(){
   $("#wHimen").hidden=z!=="himen";
   const o=gLeer();
   $("#wExt").hidden=o.hall!=="Desgarro"||z==="anal";
-  $("#wData").hidden=o.sin;$("#wClock").hidden=o.sin;
+  if(o.hall==="Cicatriz"){$("#gData").value="antiguo";o.data="antiguo"}
+  $("#wData").hidden=o.sin||o.hall==="Cicatriz";$("#wClock").hidden=o.sin;
   document.querySelectorAll("#clock .hr").forEach(g=>{const on=horas.has(+g.dataset.h);g.classList.toggle("on",on);g.classList.toggle("rec",o.data==="reciente");g.classList.toggle("ant",o.data!=="reciente")});
   const ic=$("#inkChip");ic.textContent=o.data==="reciente"?"Dibújalo en rojo (reciente)":"Dibújalo en azul (antiguo)";ic.className="chip"+(o.data==="reciente"?" r":"");
   $("#gPrev").textContent=gFrase(o);
@@ -1011,8 +1483,9 @@ const toLocal=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T
 const MUESTRAS=["Orina para toxicología","Sangre para genética","Peinado púbico","Hisopados de paredes internas de labios menores, mayores y del vestíbulo","Hisopado del canal vaginal","Hisopados de fondo de saco, más frotis en portaobjeto","Hisopados anales, más frotis en portaobjeto","Extremos distales de las uñas","Hisopado de las sugilaciones"];
 const PRE=["Profilaxis para ITS","Profilaxis para VIH","Anticoncepción de emergencia","Prueba de embarazo","Contención emocional"];
 const POST=["Tratamiento para ITS","Tratamiento para VIH","Tratamiento del estrés postraumático","Se recomienda: prueba de embarazo, estudio ecográfico, estudio radiológico, referencia a hospital de mayor nivel"];
-function calc72(){
-  const a=$("#hHecho").value,b=$("#hAten").value,box=$("#hRes");
+let enVivo=true;
+function calc72(quieto){
+  const a=$("#hHecho").value,b=$("#hAten").value,box=$("#hRes");box.classList.toggle("quieto",!!quieto);
   if(!a||!b){box.innerHTML='<p class="empty">Ingresa la fecha y hora del hecho y de la atención.</p>';return}
   const d1=new Date(a),d2=new Date(b),min=Math.round((d2-d1)/60000);
   if(min<0){box.innerHTML='<p class="err">La fecha del hecho es posterior a la de la atención. Revisa los datos.</p>';return}
@@ -1026,7 +1499,7 @@ function calc72(){
     <line class="lim" x1="${X(72).toFixed(1)}" y1="22" x2="${X(72).toFixed(1)}" y2="44"></line>
     <path class="mk" style="--dx:${(X(0)-xe).toFixed(1)}px" d="M${xe.toFixed(1)},26 l-5,-7 h10 Z"></path>
     <text class="mkl" style="--dx:${(X(0)-xe).toFixed(1)}px" x="${Math.min(Math.max(xe,22),298).toFixed(1)}" y="13">${h} h</text>${ticks}</svg>`;
-  let html=`<div class="row" style="justify-content:space-between"><div><span class="label">Tiempo transcurrido</span><div class="big">${h} h ${pad(m)} min</div><span class="note">${dias?`${dias} día${dias>1?"s":""} y ${h%24} h`:"menos de un día"}</span></div><span class="status ${dentro?"in":"out"}">${dentro?"Dentro de las 72 horas":"Más de 72 horas"}</span></div>`;
+  let html=`<div class="row" style="justify-content:space-between"><div><span class="label">Tiempo transcurrido</span><div class="big">${h} h ${pad(m)} min</div><span class="note">${dias?`${dias} día${dias>1?"s":""} y ${h%24} h`:"menos de un día"}</span></div>${(()=>{const rest=72*60-min,warn=dentro&&rest<360;return `<span class="status ${!dentro?"out":warn?"warn":"in"}">${!dentro?"Más de 72 horas":warn?"Quedan menos de 6 horas":"Dentro de las 72 horas"}</span>`})()}</div>${enVivo?`<span class="live"><i></i>En vivo: la hora de atención es ahora y se actualiza sola</span>`:""}`;
   html+=tl;
   html+=`<div class="f"><span class="label">Fecha y hora de la agresión, como van en el formulario</span><div class="boxes">${[["Día",pad(d1.getDate())],["Mes",pad(d1.getMonth()+1)],["Año",d1.getFullYear()],["Hora",pad(d1.getHours())],["Min",pad(d1.getMinutes())]].map(([k,v])=>`<span><small>${k}</small><b>${v}</b></span>`).join("")}</div></div>`;
   if(esSexual()){
@@ -1041,8 +1514,29 @@ function calc72(){
   } else html+=`<p class="note">En casos de violencia física, el dato sirve para la anamnesis. Las muestras y la profilaxis del formulario corresponden a delitos sexuales: cambia el tipo de caso si aplica.</p>`;
   box.innerHTML=html;
 }
-["#hHecho","#hAten"].forEach(s=>$(s).addEventListener("input",()=>{$("#hEj").hidden=true;calc72()}));
-$("#hNow").addEventListener("click",()=>{const n=new Date();n.setSeconds(0,0);$("#hAten").value=toLocal(n);calc72()});
+$("#hHecho").addEventListener("input",()=>{$("#hEj").hidden=true;calc72()});
+$("#hAten").addEventListener("input",()=>{$("#hEj").hidden=true;enVivo=false;calc72()});
+$("#hNow").addEventListener("click",()=>{const n=new Date();n.setSeconds(0,0);$("#hAten").value=toLocal(n);enVivo=true;calc72()});
+setInterval(()=>{if(!enVivo)return;const n=new Date();n.setSeconds(0,0);const v=toLocal(n);if($("#hAten").value!==v){$("#hAten").value=v;calc72(true)}},15000);
+
+/* ---------- Ruta crítica paso a paso ---------- */
+const PASOS=["La víctima llega al establecimiento de salud, por sí misma o derivada por la Policía (FELCV) o por la Defensoría de la Niñez y Adolescencia o el SLIM.",
+ "El establecimiento comunica el caso por teléfono a la Policía y a la Defensoría o el SLIM (líneas punteadas).",
+ "En el servicio se brinda atención de emergencia, se recoge la evidencia, se llena el Certificado Único y, si corresponde, se realiza la interrupción legal del embarazo.",
+ "Las evidencias se embalan, se rotulan y salen con cadena de custodia.",
+ "El caso y las evidencias llegan al IDIF, donde el médico forense homologa el certificado.",
+ "Después pasan a la Fiscalía y, finalmente, al Tribunal de sentencia."];
+let paso=0;
+function verPaso(){
+  const svg=$("#flowSvg");svg.classList.toggle("stepping",paso>0);
+  svg.querySelectorAll("[data-s]").forEach(e=>e.classList.toggle("on",paso>0&&e.dataset.s.split(" ").includes(String(paso))));
+  $("#stepT").textContent=paso?PASOS[paso-1]:"Ruta que sigue un caso de violencia sexual desde que la víctima llega al servicio hasta el tribunal. Pulsa «Ver paso a paso» para recorrerla.";
+  $("#stepN").textContent=paso?`Paso ${paso} de ${PASOS.length}`:"";
+  $("#stepPrev").disabled=paso===0;
+  $("#stepNext").textContent=paso===0?"Ver paso a paso":paso===PASOS.length?"Ver la ruta completa":"Siguiente paso";
+}
+$("#stepNext").addEventListener("click",()=>{paso=paso===PASOS.length?0:paso+1;verPaso()});
+$("#stepPrev").addEventListener("click",()=>{paso=Math.max(0,paso-1);verPaso()});
 
 /* ---------- Verificación ---------- */
 const CHK=[
@@ -1117,22 +1611,53 @@ document.querySelectorAll(".casebar .seg button").forEach(b=>b.addEventListener(
   $("#modeSeg").hidden=!esSexual();setModo(modo);
   renderGuia();renderMapa();renderChk();calc72();
 }));
+/* ---------- Preferencias del visitante (solo en este navegador) ---------- */
+const pref={get:k=>{try{return localStorage.getItem(k)}catch(_){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(_){}}};
+function setGuardia(on){document.body.classList.toggle("guardia",on);$("#guardiaBtn").setAttribute("aria-pressed",on?"true":"false");pref.set("cu_guardia",on?"1":"0")}
+$("#guardiaBtn").addEventListener("click",()=>setGuardia(!document.body.classList.contains("guardia")));
+$("#gBack").addEventListener("click",()=>{setGuardia(false);location.hash="guia";window.scrollTo(0,0)});
+if(pref.get("cu_guardia")==="1")setGuardia(true);
+(function(){
+  const pt=$("#portada");
+  if(pref.get("cu_portada")!=="1"&&!location.hash){pt.hidden=false;document.body.style.overflow="hidden";setTimeout(()=>{const b=pt.querySelector(".p-btn");b&&b.focus()},50)}
+  pt.addEventListener("click",e=>{const b=e.target.closest("[data-go]");if(!b)return;
+    pref.set("cu_portada","1");pt.hidden=true;document.body.style.overflow="";
+    if(b.dataset.go==="ahora"){setGuardia(true);location.hash="lesiones"}else{setGuardia(false);location.hash="guia"}});
+  pt.addEventListener("keydown",e=>{if(e.key==="Escape"){pref.set("cu_portada","1");pt.hidden=true;document.body.style.overflow=""}});
+  // Tocar el sello del encabezado vuelve a mostrar la portada
+  const s=document.querySelector(".brand .seal");s.setAttribute("tabindex","0");s.setAttribute("role","button");s.setAttribute("aria-label","Volver a la portada de inicio");
+  const abrir=()=>{pt.hidden=false;document.body.style.overflow="hidden";const b=pt.querySelector(".p-btn");b&&b.focus()};
+  s.addEventListener("click",abrir);s.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();abrir()}});
+})();
 const VISTAS=["guia","lesiones","horas","verificar","recursos"];
+let vistaPrev=null;
+function tinta(){const a=document.querySelector("nav.tabs a[aria-current]"),k=$("#tabInk");if(!a||!k)return;k.style.width=a.offsetWidth+"px";k.style.transform=`translateX(${a.offsetLeft}px)`}
 function vista(){
   let h=location.hash.slice(1);if(h==="mas")h="recursos";
   const v=VISTAS.includes(h)?h:"guia";
+  const dir=vistaPrev===null?"":(VISTAS.indexOf(v)>=VISTAS.indexOf(vistaPrev)?"der":"izq");vistaPrev=v;
+  document.querySelectorAll("[data-view]").forEach(s=>{s.classList.remove("der","izq");if(dir&&s.dataset.view===v)s.classList.add(dir)});
   document.body.dataset.v=v;fab();
   document.querySelectorAll("[data-view]").forEach(s=>s.hidden=s.dataset.view!==v);
   document.querySelectorAll("nav.tabs a").forEach(a=>a.dataset.v===v?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current"));
+  requestAnimationFrame(tinta);
 }
+addEventListener("resize",tinta);
 window.addEventListener("hashchange",()=>{vista();window.scrollTo(0,0)});
 
 $("#caseNote").textContent=NOTAS[caso];$("#modeSeg").hidden=true;
 renderFigs();renderClock();setHall();
 renderGuia();renderMapa();renderChk();actualizar();gActualizar();pintar();calc72();vista();
+/* Número de folio en el título de cada pestaña */
+VISTAS.forEach((v,i)=>{const h=document.querySelector(`[data-view="${v}"] h2`);if(h&&!h.querySelector(".folio")){const s=document.createElement("span");s.className="folio";s.textContent=`Folio ${i+1} de ${VISTAS.length}`;h.appendChild(s)}});
 
 })();
 </script>
 
+<script>
+if('serviceWorker' in navigator && location.protocol==='https:' && !/claude\.ai$/.test(location.hostname)){
+  addEventListener('load',()=>{navigator.serviceWorker.register('sw.js').catch(()=>{})});
+}
+</script>
 </body>
 </html>
